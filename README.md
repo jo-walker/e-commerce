@@ -74,9 +74,8 @@ Connecting GitHub Account and Pushing/Pulling Changes:
 - Run the following commands to initialize the local repository and link it to the GitHub repository:
   ```
   git init
-  git remote add origin <repository-url> 
+  git remote add origin https://github.com/jo-walker/e-commerce
   ```
-  for example: "git remote add origin frontend"
 
 3. **Push Changes to GitHub:** (TODO 2nd)
 - After making changes to your local repository, stage and commit the changes:
@@ -88,18 +87,17 @@ Connecting GitHub Account and Pushing/Pulling Changes:
   ```
   git push origin <branch-name>
   ```
+  in our first phase we're gonna do:
+  ```
+  git push origin frontend
+  ```
 
 4. **Pull Changes from GitHub:** (TODO 4th)
 - To retrieve changes from the remote GitHub repository, use the following command:
   ```
   git pull origin <branch-name>
   ```
-  
-Contributing:
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Implement your changes and ensure they adhere to project guidelines.
-4. Submit a pull request for review and potential inclusion into the main project.
+  replace the <brach-name> with frontend
 
 Credits:
 - Created by Jo G., Harpinder B., and Judit J.
