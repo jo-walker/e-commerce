@@ -56,7 +56,7 @@ Follow the instructions provided in the project's documentation or README to set
 // Start the server
 "npm start" 
 
-This command starts the server for the project. Replace `npm start` with the appropriate command if using a different server setup.
+This command starts the server for the project. 
 
 5. Launch the website: 
 Open a web browser and enter the URL where the LIVE server is running (e.g., `http://localhost:3000`).
