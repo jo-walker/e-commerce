@@ -37,7 +37,7 @@ Features:
 
 Usage:
 1. Clone the repository to your local machine: 
-This command copies the repository from a remote location (like GitHub) to your local machine. -> "git clone <repository-url>"
+This command copies the repository from a remote location (like GitHub) to your local machine. -> **"git clone https://github.com/jo-walker/e-commerce"**
 
 2. Install any necessary dependencies: 
 Make sure you have all required dependencies installed for the project. This may involve running package managers like npm or pip depending on the project's setup.
