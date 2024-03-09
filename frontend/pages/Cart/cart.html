@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="G:\AC\AC 2024W\CST8285\assignment2\a2\e-commerce\frontend\assets\css\styles.css">
+  <script src="G:\AC\AC 2024W\CST8285\assignment2\a2\e-commerce\frontend\assets\js\cart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Shopping Cart</h1>
+  </header>
+  <main>
+    <section class="cart">
+      <h2>Your Cart</h2>
+      <ul>
+        <!-- Cart items will be dynamically added here -->
+      </ul>
+      <div class="total">
+        Total: $<span id="total">0.00</span>
+      </div>
+      <button onclick="checkout()">Checkout</button>
+    </section>
+    <section class="products">
+      <h2>Available Products</h2>
+      <div class="product">
+        <img src="product1.jpg" alt="Product 1">
+        <h3>Product 1</h3>
+        <p>$19.99</p>
+        <button onclick="addToCart(19.99)">Add to Cart</button>
+      </div>
+      <!-- More products go here -->
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Clothing Store
+  </footer>
+</body>
+</html>

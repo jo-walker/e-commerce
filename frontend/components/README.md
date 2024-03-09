@@ -1,0 +1,1 @@
+This directory contains reusable UI components or widgets that are used across multiple pages of the application. Each component is typically implemented as a separate HTML file along with its corresponding CSS and JavaScript code. Organizing components in a separate directory promotes code reusability and maintainability.

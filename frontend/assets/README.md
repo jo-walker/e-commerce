@@ -1,0 +1,1 @@
+This directory holds static assets used by the frontend, such as images, fonts, icons, and other media files. Keeping these assets organized in a separate directory makes it easier to manage and reference them in the HTML and CSS files.
