@@ -40,5 +40,25 @@ function deleteProduct($id) {
     $result = $conn->query($sql);
     return $result;
 }
+// fetch product card data
+function getProductCards() {
+    global $conn;
+    $sql = "SELECT id, name, price FROM products";
+    $result = $conn->query($sql);
+    $products = [];
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $products[] = $row;
+        }
+    }
+    return $products;
+}
+// fetch product details by ID
+function getProductById($id) {
+    global $conn;
+    $sql = "SELECT * FROM products WHERE id = $id";
+    $result = $conn->query($sql);
+    return $result->fetch_assoc();
+}
 // add more functions as needed
 ?>

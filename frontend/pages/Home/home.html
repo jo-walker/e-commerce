@@ -8,25 +8,25 @@
     <script src="../../index.js" defer></script>
     <script src="home.js" defer></script>
     <title>Luna Ashwood</title>
+        <!-- Include Header Component -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <script> 
+    $(function(){
+      $("#header").load("../../components/Header/header.html"); 
+      $("#footer").load("footer.html"); 
+    });
+    </script> 
 </head>
-
 <body>
     <!-- Include Header Component -->
     <!-- <include src="../../components/Header/header.html"></include> -->
-    <header id="header"></header>
-    <!-- Navigation links -->
-    <nav class="links">
-        <ul class="links-container">
-            <li class="link-item"><a href="#" class="link">Home</a></li>
-            <li class="link-item"><a href="#" class="link">Featured</a></li>
-            <li class="link-item"><a href="#" class="link">Sweaters</a></li>
-            <li class="link-item"><a href="#" class="link">Clothing</a></li>
-            <li class="link-item"><a href="#" class="link">About Us</a></li>
-        </ul>
-    </nav>
-    <!-- Home Page Content -->
+    <div id="header"></div>
+
     <header class="main-section">
-        <!-- Background div -->
         <div class="background">
             <p class="sub-heading"> Fashion that Inspires Confidence </p>
         </div>
@@ -205,12 +205,11 @@
             <!-- Product cards using product-card.html-->
             <div class="product-container">
                 <!-- Include Product Card -->
-                <include src="product-card.html"></include>
+                <include src="../../components/Product/product-card.html"></include>
             </div>
         </section>
     </main>
     <!-- Include Footer Component -->
-    <!-- <include src="../../components/Footer/footer.html"></include> -->
     <footer id="footer"></footer>
 </body>
 
