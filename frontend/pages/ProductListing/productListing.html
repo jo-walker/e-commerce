@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <script src="../../index.js" defer></script>
+    <script src="home.js" defer></script>
+    <title>Luna Ashwood</title>
+        <!-- Include Header Component -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <script> 
+    $(function(){
+      $("#header").load("../../components/Header/header.html"); 
+      $("#footer").load("../../components/Footer/footer.html"); 
+    });
+    </script> 
+</head>
+<body>
+    <!-- Include Header Component -->
+    <!-- <include src="../../components/Header/header.html"></include> -->
+    <div id="header"></div>
+
+    <header class="main-section">
+        <div class="background">
+            <p class="sub-heading"> Fashion that Inspires Confidence </p>
+        </div>
+    </header>
+    <main>
+        <!-- Filters section -->
+        <section class="filters">
+            <select name="sortby" class="sort-by">
+                <option value="price">Sort By</option>
+                <!-- Add more sorting options here -->
+            </select>
+            <select name="categories" class="categories">
+                <option value="all">Categories</option>
+                <!-- Add more categories here -->
+            </select>
+            <select name="color" class="color">
+                <option value="all">Color</option>
+                <!-- Add more colors here -->
+            </select>
+            <select name="size" class="size">
+                <option value="all">Size</option>
+                <!-- Add more sizes here -->
+            </select>
+        </section>
+
+        <!-- Products listing -->
+        <section class="product-listing">
+            <!-- Repeat this section for each product -->
+            <div class="product-card">
+                <img src="path_to_product_image.jpg" alt="Product Name">
+                <h3>Product Name</h3>
+                <p>Description/Color/Sizes</p>
+                <button>View Details</button>
+            </div>
+            <!-- End product section -->
+        </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <a href="#">Previous</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">Next</a>
+        </div>
+    </main>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="review">
+            <h4>User Name</h4>
+            <p>Review Comment</p>
+        </div>
+        <!-- Repeat for more reviews -->
+    </section>
+        <!-- Include Footer Component -->
+        <footer id="footer"></footer>
+</body>
+</html>
