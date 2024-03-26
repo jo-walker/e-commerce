@@ -1,12 +1,16 @@
 <?php
-// SQLite database file path
-$db_file = 'G:\Program Files\sqlite\ecommerce.db';
+
+$servername = "localhost";
+$username = "admin_a2";
+$password = "CST8285_A2.";
 
 // Create database connection
-$conn = new SQLite3($db_file);
+$conn = new mysqli($servername, $username, $password);
 
-// Check if the connection was successful
-if (!$conn) {
-    die("Connection failed: " . $conn->lastErrorMsg());
-}
-?>
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  echo "Connected successfully";
+  ?>
+  

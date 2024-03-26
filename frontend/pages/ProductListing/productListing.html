@@ -20,17 +20,12 @@
       $("#footer").load("../../components/Footer/footer.html"); 
     });
     </script> 
+    <link rel="stylesheet" type="text/css" href="../../components/Product/product-card.css">
 </head>
 <body>
     <!-- Include Header Component -->
     <!-- <include src="../../components/Header/header.html"></include> -->
     <div id="header"></div>
-
-    <header class="main-section">
-        <div class="background">
-            <p class="sub-heading"> Fashion that Inspires Confidence </p>
-        </div>
-    </header>
     <main>
         <!-- Filters section -->
         <section class="filters">
@@ -51,18 +46,42 @@
                 <!-- Add more sizes here -->
             </select>
         </section>
-
-        <!-- Products listing -->
-        <section class="product-listing">
-            <!-- Repeat this section for each product -->
-            <div class="product-card">
-                <img src="path_to_product_image.jpg" alt="Product Name">
-                <h3>Product Name</h3>
-                <p>Description/Color/Sizes</p>
-                <button>View Details</button>
+        <div class="category-section">
+            <div class="category-block">
+                <a href="link_to_dresses.html">
+                    <img src="path_to_dresses_image.jpg" alt="Dresses">
+                    <span class="category-name">Dresses</span>
+                </a>
             </div>
-            <!-- End product section -->
+            <div class="category-block">
+                <a href="link_to_sweaters.html">
+                    <img src="path_to_sweaters_image.jpg" alt="Sweaters">
+                    <span class="category-name">Sweaters</span>
+                </a>
+            </div>
+            <!-- Add more categories as needed -->
+        </div>
+        
+        <section class="product-listing">
+            <?php
+            // Include your PHP script to fetch product data
+            include 'fetch_products.php';
+        
+            // Loop through the fetched product data and generate product cards
+            foreach ($products as $product) {
+                ?>
+                <div class="product-card">
+                    <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
+                    <h3><?php echo $product['name']; ?></h3>
+                    <p><?php echo $product['description']; ?></p>
+                    <button>View Details</button>
+                </div>
+                <?php
+            }
+            ?>
         </section>
+        
+        
 
         <!-- Pagination -->
         <div class="pagination">

@@ -4,11 +4,11 @@
 // Include the database connection
 include 'connection.php';
 
-// database queries
+// database queries as a customer
 // retrieve all products
 function getProducts() {
     global $conn;
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM Products";
     $result = $conn->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);
 }
@@ -19,46 +19,59 @@ function getProductById($id) {
     $result = $conn->query($sql);
     return $result->fetch_assoc();
 }
-// insert a new product
-function getNewProduct($name, $price, $description) {
+// search for products by name or description
+function searchProducts($name) {
     global $conn;
-    $sql = "INSERT INTO products (name, price, description) VALUES ('$name', $price, '$description')";
+    $sql = "SELECT * FROM Products
+    WHERE Name LIKE '%$name%' OR Description LIKE '%$description%'";
     $result = $conn->query($sql);
-    return $result;
+    return $result->fetch_all(MYSQLI_ASSOC);
 }
-// update an existing product
-function updateProduct($id, $name, $price, $description) {
+// filter products by category
+function filterProducts($category) {
     global $conn;
-    $sql = "UPDATE products SET name = '$name', price = $price, description = '$description' WHERE id = $id";
+    $sql = "SELECT * FROM Products WHERE CategoryID = '$categoryID'";
     $result = $conn->query($sql);
-    return $result;
+    return $result->fetch_all(MYSQLI_ASSOC);
 }
-// delete a product
-function deleteProduct($id) {
+// view details of a product
+function viewProduct($productID) {
     global $conn;
-    $sql = "DELETE FROM products WHERE id = $id";
-    $result = $conn->query($sql);
-    return $result;
-}
-// fetch product card data
-function getProductCards() {
-    global $conn;
-    $sql = "SELECT id, name, price FROM products";
-    $result = $conn->query($sql);
-    $products = [];
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $products[] = $row;
-        }
-    }
-    return $products;
-}
-// fetch product details by ID
-function getProductById($id) {
-    global $conn;
-    $sql = "SELECT * FROM products WHERE id = $id";
+    $sql = "SELECT * FROM Products WHERE ProductID = $productID";
     $result = $conn->query($sql);
     return $result->fetch_assoc();
 }
-// add more functions as needed
+
+// both admin and customer queries
+// list all categories for filtering (clientside) or editing (admin)
+function getCategories() {
+    global $conn;
+    $sql = "SELECT * FROM Categories";
+    $result = $conn->query($sql);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+// add a new user
+function addUser($name, $password, $email, $role) {
+    global $conn;
+    $sql = "INSERT INTO Users (Username, Password, Email, Role)
+    VALUES ('$name', '$password', '$email', '$role')";
+    $result = $conn->query($sql);
+    return $result;
+}
+// update an existing user information
+function updateUser($userID, $name, $password, $email, $role) {
+    global $conn;
+    $sql = "UPDATE Users
+    SET Username = '$name', Password = '$password', Email = '$email', Role = '$role'
+    WHERE UserID = $userID";
+    $result = $conn->query($sql);
+    return $result;
+}
+// delete a user
+function deleteUser($userID) {
+    global $conn;
+    $sql = "DELETE FROM Users WHERE UserID = $userID";
+    $result = $conn->query($sql);
+    return $result;
+}
 ?>
