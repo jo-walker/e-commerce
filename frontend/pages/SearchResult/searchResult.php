@@ -1,16 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css"> <!-- Link to your external CSS file -->
+</head>
+<body>
+
 <?php 
 include '../../../database/connection.php';
-include '../../Header/header.php';
+include '../../components/Header/header.php';
 include '../../../database/queries.php';
 
 // Get the search term from URL parameters
 $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; ?>
 
-<!-- Search Form -->
-<form action="searchResult.php" method="get">
-    <input type="text" name="searchTerm" placeholder="Search for products..." value="<?php echo htmlspecialchars($searchTerm); ?>">
-    <button type="submit">Search</button>
-</form>
 <?php
 
 // Only search if there is a search term
@@ -28,4 +33,6 @@ if (!empty($searchTerm)) {
 }
 ?>
 
-<?php include '../../Footer/footer.php'; ?>
+<?php include '../../components/Footer/footer.php'; ?>
+</body>
+</html>
