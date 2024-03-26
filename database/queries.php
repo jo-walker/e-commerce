@@ -10,30 +10,48 @@ function getProducts() {
     global $conn;
     $sql = "SELECT * FROM Products";
     $result = $conn->query($sql);
-    return $result->fetch_all(MYSQLI_ASSOC);
+    if ($result) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        error_log("Database query failed: " . $conn->error); // Log error to PHP error log
+        return []; // Return an empty array as a safe default
+    }
 }
+
 // retrieve a single product by id
 function getProductById($id) {
     global $conn;
-    $sql = "SELECT * FROM products WHERE id = $id";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
     return $result->fetch_assoc();
 }
+
 // search for products by name or description
-function searchProducts($name) {
+function searchProducts($searchTerm) {
     global $conn;
-    $sql = "SELECT * FROM Products
-    WHERE Name LIKE '%$name%' OR Description LIKE '%$description%'";
-    $result = $conn->query($sql);
+    $searchTerm = '%' . $searchTerm . '%';
+    $sql = "SELECT * FROM Products WHERE Name LIKE ? OR Description LIKE ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $searchTerm, $searchTerm); // 'ss' denotes two string parameters
+    $stmt->execute();
+    $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
 }
+
 // filter products by category
-function filterProducts($category) {
+function filterProducts($categoryID) {
     global $conn;
-    $sql = "SELECT * FROM Products WHERE CategoryID = '$categoryID'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM Products WHERE CategoryID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $categoryID); // CategoryID is an integer
+    $stmt->execute();
+    $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
 }
+
 // view details of a product
 function viewProduct($productID) {
     global $conn;
@@ -71,6 +89,33 @@ function updateUser($userID, $name, $password, $email, $role) {
 function deleteUser($userID) {
     global $conn;
     $sql = "DELETE FROM Users WHERE UserID = $userID";
+    $result = $conn->query($sql);
+    return $result;
+}
+// database queries as an admin
+
+// add a new product
+function addProduct($name, $description, $price, $stockQuantity, $categoryID, $imageURL) {
+    global $conn;
+    $sql = "INSERT INTO Products (Name, Description, Price, StockQuantity, CategoryID, ImageURL)
+    VALUES ('$name', '$description', $price, $stockQuantity, $categoryID, '$imageURL')";
+    $result = $conn->query($sql);
+    return $result;
+}
+
+// update an existing product
+function updateProduct($productID, $name, $description, $price, $stockQuantity, $categoryID, $imageURL) {
+    global $conn;
+    $sql = "UPDATE Products
+    SET Name = '$name', Description = '$description', Price = $price, StockQuantity = $stockQuantity, CategoryID = $categoryID, ImageURL = '$imageURL'
+    WHERE ProductID = $productID";
+    $result = $conn->query($sql);
+    return $result;
+}
+// delete a product
+function deleteProduct($productID) {
+    global $conn;
+    $sql = "DELETE FROM Products WHERE ProductID = $productID";
     $result = $conn->query($sql);
     return $result;
 }
