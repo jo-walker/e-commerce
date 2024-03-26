@@ -32,8 +32,8 @@
                     </div>
                     <!-- Buttons -->
                 </div>
-                <button type="submit" class="Sign-up-button" role="button">Sign-up</button>
-                <button type="submit" class="Register-button" role="button">Register</button>
+                <a href="../Login/sign.html" class="Sign-up-button" role="buton">Sign-up</a>
+                <a href="../Register/register.php" class="Register-button" role="button">Register</a>
             </div>
             </div>
         </nav>

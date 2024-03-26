@@ -1,12 +1,13 @@
-
 <!DOCTYPE html
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
     <link rel="stylesheet" type="text/css" href="registcss.css">
-   
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/website.css">
+    <title>Registration Form</title>
+    <?php include '../../components/Header/header.php'; ?>
 </head>
 <body>
     <form action="register.php" method="post" id="registrationForm">
@@ -36,7 +37,7 @@
             <button type="submit" name="register">Register</button>
         </div>
         <div class="have-account">
-            <p>Already have an Account ?<a href="sign.html"> Sign in</a></p>
+            <p>Already have an Account ?<a href="../Login/sign.html"> Sign in</a></p>
         </div>
 
     </form>
