@@ -16,22 +16,36 @@ include '../../../database/queries.php';
 // Get the search term from URL parameters
 $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; ?>
 
-<?php
+<!-- Product Display Section -->
+<div class="product-display">
+    <?php
+    if (!empty($searchTerm)) {
+        $products = searchProducts($searchTerm); // This is your search function from queries.php
 
-// Only search if there is a search term
-if (!empty($searchTerm)) {
-    $products = searchProducts($searchTerm); // Call the function from queries.php
-
-    // Check if products were found and display them
-    if (!empty($products)) {
-        foreach ($products as $product) {
-            echo '<div>' . htmlspecialchars($product['Name']) . ' - ' . htmlspecialchars($product['Description']) . '</div>';
+        if (!empty($products)) {
+            echo '<div class="product-grid">'; // Assuming you have CSS for .product-grid to display products in a grid
+            foreach ($products as $product) {
+                echo '<div class="product-item">'; // Individual product item
+                echo '<img src="' . htmlspecialchars($product['ImageURL']) . '" alt="Product Image" class="product-image">'; // Assuming there's an ImageURL field
+                echo '<div class="product-details">';
+                echo '<h2>' . htmlspecialchars($product['Name']) . '</h2>'; // Product name
+                echo '<p>' . htmlspecialchars($product['Description']) . '</p>'; // Product description
+                echo '<p class="product-price">$' . htmlspecialchars($product['Price']) . '</p>'; // Product price
+                echo '<a href="productDetails.php?productId=' . htmlspecialchars($product['ProductID']) . '" class="view-details">View Details</a>'; // Link to product details
+                echo '</div>';
+                echo '</div>'; // Close .product-item
+            }
+            echo '</div>'; // Close .product-grid
+        } else {
+            echo '<div>No products found.</div>';
         }
-    } else {
-        echo '<div>No products found.</div>';
     }
-}
-?>
+    ?>
+</div>
+<!-- Pagination (If applicable) -->
+<div class="pagination">
+    <!-- Insert your pagination links here -->
+</div>
 
 <?php include '../../components/Footer/footer.php'; ?>
 </body>

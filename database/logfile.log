@@ -1,0 +1,6 @@
+if ($conn->connect_error) {
+    error_log("Connection failed: " . $conn->connect_error);
+    // Optionally, display a user-friendly message
+    echo "Sorry, we’re experiencing connection issues.";
+    exit; // Prevent further execution in case of a connection error
+}Connection successfulConnection successfulConnection successfulConnection successfulConnection successfulConnection successfulConnection successfulConnection successfulConnection successful

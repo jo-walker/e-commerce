@@ -4,21 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/website.css">
     <script src="../../index.js" defer></script>
     <script src="home.js" defer></script>
     <title>Luna Ashwood</title>
         <!-- Include Header Component -->
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-    </script>
-    <script> 
-    $(function(){
-      $("#header").load("../../components/Header/header.html"); 
-      $("#footer").load("footer.html"); 
-    });
-    </script> 
+        <?php include '../../components/Header/header.php'; ?>
 </head>
 <body>
     <!-- Include Header Component -->
@@ -28,7 +19,7 @@
             <div class="nav">
                 <!-- Logo -->
                 <div class="logo">
-                <img src="Images/logo.png" alt="Logo of the website">
+                <img src="../../assets/images/logo.png" alt="Logo of the website">
                 </div>
                 <a href="user.html" class="user" alt="user-Image"></a>
                 <a href="cart.html" class="shopping-cart" alt="cart-Image"></a>
@@ -51,7 +42,7 @@
         <nav class="links">
             <ul class="links-container">
                 <li class="link-item">
-                    <a href="index.html" class="link">Home</a>
+                    <a href="index.php" class="link">Home</a>
                 </li>
                 <li class="link-item"><a href="#" class="link">Featured</a></li>
                 <li class="link-item"><a href="#" class="link">Sweaters</a></li>
@@ -65,11 +56,6 @@
                 <p class="sub-heading"> Fashion that Inspires Confidence </p>
             </div>
         </header>
-    <div class="main-section">
-        <div class="background">
-            <p class="sub-heading"> Fashion that Inspires Confidence </p>
-        </div>
-    </div>
     <main>
         <!-- Product section -->
         <section class="product">
@@ -84,12 +70,28 @@
                 <button class="nxt-btn"><img src="../../assets/images/arrow.jpg" alt="next-button"></button>
             </div>
             <!-- Product cards
+   <main>
+        <section class="product">
+            <h2 class="product-category">Best selling
+                <hr id="hr">
+            </h2>
+
+            <!-- Button to bring it to the first product  -->
+            <div class="pre-nxt-btn">
+
+                <button class="pre-btn"><img src="../../assets/images/arrow.jpg" alt="pre-button"></button>
+                <!-- Button to bring user to the next product -->
+                <button class="nxt-btn"><img src="../../assets/images/arrow.jpg" alt="next-button"></button>
+            </div>
+            <!-- product cards -->
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card1.png" class="product-thumb" alt="picture">
-                        <button class="card-btn">Add to whislist</button>
+                        <button class="card-btn">Whislist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
+
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">American Eagle</h2>
@@ -101,7 +103,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card2.png" class="product-thumb" alt="">
-                        <button class="card-btn">Add to Wishlist </button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">Forever 21</h2>
@@ -112,7 +115,8 @@
                 <div class="product-card">
                     <div class="product-image">
                         <img src="../../assets/images/card3.avif" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">H&M</h2>
@@ -124,7 +128,8 @@
                     <div class="product-image">
                         <span class="discount-tag">40% off</span>
                         <img src="../../assets/images/card4.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">h&m</h2>
@@ -136,7 +141,8 @@
                     <div class="product-image">
                         <span class="discount-tag">20% off</span>
                         <img src="../../assets/images/card5.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">Puma</h2>
@@ -148,7 +154,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card6.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">MANFINITY HOMME</h2>
@@ -160,7 +167,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card7.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">Shein</h2>
@@ -172,7 +180,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card8.webp" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">h&m</h2>
@@ -184,7 +193,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card9.webp" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">MANFINITY HOMME</h2>
@@ -196,7 +206,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card10.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">American Eagle</h2>
@@ -208,7 +219,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card11.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">Shein</h2>
@@ -220,7 +232,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card12.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">Forever 21</h2>
@@ -232,7 +245,8 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="../../assets/images/card13.png" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn">Wishlist</button>
+                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">h&m</h2>
@@ -240,7 +254,10 @@
                         <span class="price">$20</span><span class="actual-price">$40</span>
                     </div>
                 </div>
-            </div> -->
+
+            </div>
+        </section>
+    </main>
             <!-- Product cards using product-card.html-->
             <div class="product-container">
                 <!-- Include Product Card -->
@@ -248,8 +265,9 @@
             </div>
         </section>
     </main>
+
     <!-- Include Footer Component -->
-    <footer id="footer"></footer>
+<?php include '../../components/Footer/footer.html'; ?>
 </body>
 
 </html>
