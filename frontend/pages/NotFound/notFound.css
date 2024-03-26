@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background: #fcfcfc;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #383838; /* Update the text color to a darker shade */
+}
+
+span {
+    color: #383838;
+    font-weight: bold; /* Add font weight to make it stronger */
+}
+
+#notfoundsearch {
+    padding: 10px;
+    border: none;
+    background-color: #d5d2d2;
+    border-radius: 25px;
+    color: #383838;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Update the box shadow to make it more prominent */
+    font-size: 1.3rem;
+    margin: 10px;
+}
+
+#notfoundsearch:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Update the hover box shadow to make it more prominent */
+}
+h1 {
+    font-size: 100px;
+    margin-bottom: 20px;
+    color: #e7d3d3;
+    font-weight: bold;
+}
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+span {
+    color: #383838;
+}
+#notfoundsearch {
+    width: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 30px;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid #e7d3d3;
+    background-color: #e7d3d3;
+    border-radius: 20px;
+    color: #383838;
+    transition: .3s;
+}
+#notfoundsearch:hover {
+    box-shadow: 8px 8px #383838;
+    transition: .3s;
+}
+hr {
+    margin: 50px 0;
+    border:none;
+    background-color: #e7d3d3;
+    border-radius: 25px;
+    height: 5px;
+}

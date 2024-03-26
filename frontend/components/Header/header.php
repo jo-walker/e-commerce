@@ -34,9 +34,4 @@
             <li class="link-item"><a href="#footer" class="link">About Us</a></li>
         </ul>
     </nav>
-    <!-- Background div -->
-    <div class="main-section">
-        <div class="background">
-            <p class="sub-heading"> Fashion that Inspires Confidence </p>
-        </div>
     </header>
