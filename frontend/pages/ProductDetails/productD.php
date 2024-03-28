@@ -1,29 +1,44 @@
-<?php
-// Include the database connection file
-include 'connection.php';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/products.css">
+    <link rel="stylesheet" href="../../assets/css/website.css">
+</head>
+<body>
+    
+<?php 
+include '../../../database/connection.php';
+include '../../components/Header/header.php';
+include '../../../database/queries.php';
 
-// Check if the product ID is provided in the request
-if(isset($_GET['id'])) {
-    // Sanitize the input to prevent SQL injection
-    $productId = mysqli_real_escape_string($conn, $_GET['id']);
+$productId = isset($_GET['productId']) ? (int) $_GET['productId'] : 0;
 
-    // Query to fetch product details based on the provided ID
-    $query = "SELECT * FROM products WHERE id = '$productId'";
-    $result = mysqli_query($conn, $query);
-
-    // Check if the query was successful
-    if($result) {
-        // Fetch the product details
-        $product = mysqli_fetch_assoc($result);
-
-        // Return the product details as JSON response
-        echo json_encode($product);
+if ($productId > 0) {
+    $product = getProductById($productId);
+    if ($product) {
+        // Display the product details
+        echo '<div class="product-item">'; 
+        echo '<div class="product-image">';
+        echo '<img src="' . htmlspecialchars($product['ImagePath']) . '" alt="' . htmlspecialchars($product['Name']) . '">'; // TO-DO: Image path
+        echo '</div>'; // Close .product-image
+        echo '<div class="product-details">';
+        echo '<h1>' . htmlspecialchars($product['Name']) . '</h1>';
+        echo '<p>' . htmlspecialchars($product['Description']) . '</p>';
+        echo '<p>Price: $' . htmlspecialchars($product['Price']) . '</p>';
+        echo '</div>'; // Close .product-details
+        echo '</div>'; // Close .product-item
     } else {
-        // If the query fails, return an error message
-        echo json_encode(array('error' => 'Failed to fetch product details'));
+        echo '<p>Product not found.</p>';
     }
 } else {
-    // If product ID is not provided, return an error message
-    echo json_encode(array('error' => 'Product ID is missing'));
+    echo '<p>Invalid product ID.</p>';
 }
+
+include '../../components/Footer/footer.html';  
 ?>
+</body>
+</html>

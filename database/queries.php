@@ -21,12 +21,42 @@ function getProducts() {
 // retrieve a single product by id
 function getProductById($id) {
     global $conn;
-    $sql = "SELECT * FROM products WHERE id = ?";
+    $sql = "SELECT * FROM products WHERE ProductID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
-    return $result->fetch_assoc();
+    if ($product = $result->fetch_assoc()) {
+        return $product;
+    } else {
+        return null; // Return null if no product is found
+    }}
+
+// Function to generate HTML for a single product
+function displayProduct($productId) {
+    $product = getProductById($productId);
+    if ($product) {
+        //  'product-details.php' is  product details page -> it expects a 'productId' query parameter.
+        $productDetailsUrl = "product-details.php?productId=" . htmlspecialchars($productId);
+
+        $html = '<a href="' . $productDetailsUrl . '" class="product-card-link">';
+
+        $html = '<div class="product-card">';
+        $html .= '<div class="product-image">';
+        $html .= '<img src="' . htmlspecialchars($product['ImagePath']) . '" alt="' . htmlspecialchars($product['Name']) . '">';
+        $html .= '</div>'; // Close product-image
+        $html .= '<div class="product-info">';
+        $html .= '<h3>' . htmlspecialchars($product['Name']) . '</h3>';
+        $html .= '<p>' . htmlspecialchars($product['Description']) . '</p>';
+        $html .= '<p>Price: $' . htmlspecialchars($product['Price']) . '</p>';
+        $html .= '</div>'; // Close product-info
+        $html .= '</div>'; // Close product-card
+        $html .= '</a>'; // Close product-card-link
+
+        return $html;
+    } else {
+        return '<p>Product not found.</p>';
+    }
 }
 
 // search for products by name or description

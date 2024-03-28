@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../Register/registcss.css"> 
-    <title>Sign In </title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/website.css">
+    <title>Sign In</title>
+    <?php include '../../components/Header/header.php'; ?>
 </head>
 <body>
     <form action="signin.php" type="post">
@@ -24,10 +27,10 @@
         </div>
 
         <div class="input-group">
-            <a href="">Forgot Password?</a>
+            <a href="../ForgotPassword/forgotpass.html">Forgot Password?</a>
         </div>
     </form>
 
-    
+    <?php include '../../components/Footer/footer.html'; ?>
 </body>
 </html>

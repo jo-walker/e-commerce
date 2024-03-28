@@ -3,7 +3,11 @@
 //     as setting up event listeners, 
 //     making initial API calls, and 
 //     rendering the initial state of the application. 
+
 // It may also import other JavaScript modules and libraries needed for the frontend functionality.
+
+
+
 // function to open cart
 
 // Navigation buttons for cards

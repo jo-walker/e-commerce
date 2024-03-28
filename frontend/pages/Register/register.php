@@ -37,10 +37,11 @@
             <button type="submit" name="register">Register</button>
         </div>
         <div class="have-account">
-            <p>Already have an Account ?<a href="../Login/sign.html"> Sign in</a></p>
+            <p>Already have an Account ?<a href="../Login/sign.php"> Sign in</a></p>
         </div>
 
     </form>
-    
+    <?php include '../../components/Footer/footer.html'; ?>
+
 </body>
 </html>

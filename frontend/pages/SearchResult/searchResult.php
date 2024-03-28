@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel="stylesheet" href="../../assets/css/styles.css"> <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="../../assets/css/styles.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="../../assets/css/products.css">
 </head>
 <body>
 
@@ -23,7 +24,7 @@ $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; ?>
         $products = searchProducts($searchTerm); // This is your search function from queries.php
 
         if (!empty($products)) {
-            echo '<div class="product-grid">'; // Assuming you have CSS for .product-grid to display products in a grid
+            echo '<div class="product-grid">'; // CSS for .product-grid to display products in a grid
             foreach ($products as $product) {
                 echo '<div class="product-item">'; // Individual product item
                 echo '<img src="' . htmlspecialchars($product['ImageURL']) . '" alt="Product Image" class="product-image">'; // Assuming there's an ImageURL field
@@ -31,7 +32,7 @@ $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; ?>
                 echo '<h2>' . htmlspecialchars($product['Name']) . '</h2>'; // Product name
                 echo '<p>' . htmlspecialchars($product['Description']) . '</p>'; // Product description
                 echo '<p class="product-price">$' . htmlspecialchars($product['Price']) . '</p>'; // Product price
-                echo '<a href="productDetails.php?productId=' . htmlspecialchars($product['ProductID']) . '" class="view-details">View Details</a>'; // Link to product details
+                echo '<a href="..\ProductDetails\productD.php?productId=' . htmlspecialchars($product['ProductID']) . '" class="view-details">View Details</a>'; // Link to product details
                 echo '</div>';
                 echo '</div>'; // Close .product-item
             }
@@ -47,6 +48,6 @@ $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; ?>
     <!-- Insert your pagination links here -->
 </div>
 
-<?php include '../../components/Footer/footer.php'; ?>
+<?php include '../../components/Footer/footer.html'; ?>
 </body>
 </html>
