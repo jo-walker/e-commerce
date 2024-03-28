@@ -8,8 +8,8 @@
     <script src="../../index.js" defer></script>
     <script src="home.js" defer></script>
     <title>Luna Ashwood</title>
-        <!-- Include Header Component -->
-        <?php include '../../components/Header/header.php'; ?>
+    <!-- Include Header Component -->
+    <?php include '../../components/Header/header.php'; ?>
 </head>
 <body>
     <!-- Include Header Component -->
@@ -57,11 +57,12 @@
             </div>
         </header>
     <main>
+
+
         <!-- Product section -->
         <section class="product">
-            <h2 class="product-category">Best selling items
-                <hr id="hr">
-            </h2>
+            <h2 class="product-category">Best selling items</h2>
+            <hr id="hr">
 
             <!-- Button to bring it to the first product  -->
             <div class="pre-nxt-btn">
@@ -69,192 +70,27 @@
                 <!-- Button to bring user to the next product -->
                 <button class="nxt-btn"><img src="../../assets/images/arrow.jpg" alt="next-button"></button>
             </div>
-            <!-- Product cards
-   <main>
-        <section class="product">
-            <h2 class="product-category">Best selling
-                <hr id="hr">
-            </h2>
 
-            <!-- Button to bring it to the first product  -->
-            <div class="pre-nxt-btn">
-
-                <button class="pre-btn"><img src="../../assets/images/arrow.jpg" alt="pre-button"></button>
-                <!-- Button to bring user to the next product -->
-                <button class="nxt-btn"><img src="../../assets/images/arrow.jpg" alt="next-button"></button>
-            </div>
             <!-- product cards -->
             <div class="product-container">
+            <?php
+                include '../../../database/queries.php'; // Make sure path is correct.
+                $products = getProducts(); // Fetch all products.
+                foreach ($products as $product): ?>
                 <div class="product-card">
                     <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card1.png" class="product-thumb" alt="picture">
-                        <button class="card-btn">Whislist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-
+                    <span class="discount-tag">50% off</span> <!-- If applicable -->
+                            <img src="<?php echo htmlspecialchars($product['ImagePath']); ?>" alt="Product Image" class="product-thumb">
+                            <button class="card-btn">Wishlist</button>
+                            <button class="cart-btn">Add to cart</button>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-brand"><?php echo htmlspecialchars($product['Brand']); ?></h2>
+                            <p class="product-description"><?php echo htmlspecialchars($product['Description']); ?></p>
+                            <span class="price">$<?php echo htmlspecialchars($product['Price']); ?></span>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">American Eagle</h2>
-                        <p class="description">A cozy sweatshirt perfect for chilly evenings.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card2.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Forever 21</h2>
-                        <p class="description"> White sweatshirt with blue patterns for women's.</p>
-                        <span class="price">$20</span><span class="actual-price">$60</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../../assets/images/card3.avif" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">H&M</h2>
-                        <p class="description">A Brown casual Hoodie for mens.</p>
-                        <span class="price">$50</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">40% off</span>
-                        <img src="../../assets/images/card4.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">h&m</h2>
-                        <p class="description">Men solid white drawstring pocket detailed thermal line hoodie. </p>
-                        <span class="price">$50</span><span class="actual-price">$80</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">20% off</span>
-                        <img src="../../assets/images/card5.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Puma</h2>
-                        <p class="description">Loosefit mens casual yellow hoodie.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card6.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">MANFINITY HOMME</h2>
-                        <p class="description">Manfinity homme mens formal blue shirt with white check box.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card7.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Shein</h2>
-                        <p class="description">Shein drawstring waist hooded coat.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card8.webp" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">h&m</h2>
-                        <p class="description">Men's 1pc solid lapel coller long sleeve jacket </p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card9.webp" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">MANFINITY HOMME</h2>
-                        <p class="description">Mens shadow colors short sleeve shirt.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card10.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">American Eagle</h2>
-                        <p class="description">Womens short sleeve light pink cardigan.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card11.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Shein</h2>
-                        <p class="description">Solid blue single button blazer and pants. </p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card12.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Forever 21</h2>
-                        <p class="description">A solid plain white hoodie for women's.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-tag">50% off</span>
-                        <img src="../../assets/images/card13.png" class="product-thumb" alt="">
-                        <button class="card-btn">Wishlist</button>
-                        <button class="cart-btn" id="addToCartBtn">Add to cart</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">h&m</h2>
-                        <p class="description">A bottom wear black casual pants.</p>
-                        <span class="price">$20</span><span class="actual-price">$40</span>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
         </section>
     </main>
