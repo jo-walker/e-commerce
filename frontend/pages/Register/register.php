@@ -1,3 +1,58 @@
+<?php
+// Start by including the database configuration file
+require '..\..\..\database\connection.php'; // database config file
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve and sanitize form data
+    $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+    $password = $_POST["password"]; // Password will be hashed, no need to sanitize
+    $confirmPassword = $_POST["confirm-password"];
+
+    // Basic validation
+    if (empty($name) || empty($email) || empty($password) || empty($confirmPassword)) {
+        die("Please fill in all required fields.");
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format");
+    }
+
+    if ($password !== $confirmPassword) {
+        die("Passwords do not match.");
+    }
+
+    // Hash the password - never store plain text passwords
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Prepare and execute SQL statement - use placeholders to prevent SQL injection
+    $sql = "INSERT INTO Users (Username, Email, Password) VALUES (?, ?, ?)";
+
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("sss", $name, $email, $hashedPassword);
+
+        if ($stmt->execute()) {
+            // Success! Redirect to login page, or a success message page
+            header("Location: ../Login/sign.php?status=success"); // redirection URL
+            exit();
+        } else {
+            // Check for duplicate entry or other errors
+            if ($conn->errno == 1062) { // 1062 is the error code for duplicate entry
+                echo "This email is already registered.";
+            } else {
+                echo "Error: " . $conn->error;
+            }
+        }
+
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error;
+    }
+    
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html
 <html>
 <head>
@@ -8,8 +63,10 @@
     <link rel="stylesheet" href="../../assets/css/website.css">
     <title>Registration Form</title>
     <?php include '../../components/Header/header.php'; ?>
+    <?php include '../../../database/connection.php'; ?>
 </head>
 <body>
+
     <form action="register.php" method="post" id="registrationForm">
         <h2>User Registration</h2>
         <div class="input-group">
@@ -21,18 +78,14 @@
             <input type="email" name="email" id="email" required>
         </div>
         <div class="input-group">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" autocomplete="new-password" required>
         </div>
         <div class="input-group">
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="password" name="confirm-password" id="confirm-password" required>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" name="confirm-password" id="confirm-password" autocomplete="new-password" required>
         </div>
-        <div class="input-group">
-            <label>Gender:</label>
-            <input type="radio" name="gender" value="Male" id="male" required> Male
-            <input type="radio" name="gender" value="Female" id="female"> Female
-        </div>
+
         <div class="input-group">
             <button type="submit" name="register">Register</button>
         </div>

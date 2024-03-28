@@ -60,3 +60,19 @@
     
 </body>
 </html>
+session_start();
+
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
+    $stmt = $conn->prepare("SELECT Name, Email FROM Users WHERE UserID = ?");
+    $stmt->bind_param("i", $_SESSION['userid']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($user = $result->fetch_assoc()) {
+        // Display user details
+        echo "Name: " . htmlspecialchars($user['Name']);
+        // Further details
+    }
+} else {
+    // Redirect to login page
+}
