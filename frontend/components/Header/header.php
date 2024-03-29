@@ -17,7 +17,7 @@
                 </form>
                 <!-- Buttons -->
             </div>
-            <a href="../../pages/Login/sign.php" class="Sign-up-button">Sign-in</a> <!-- Buttons should have an anchor tag -->
+            <a href="../../pages/Login&Logout/sign.php" class="Sign-up-button">Sign-in</a> <!-- Buttons should have an anchor tag -->
             <a href="../../pages/Register/register.php" class="Register-button">Register</a>
         </div>
     </nav>
