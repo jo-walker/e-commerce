@@ -3,6 +3,7 @@
 if (isset($_GET['token'])) {
     $token = $_GET['token'];
     // Validate token logic here (ensure it exists and is not expired)
+    
     // If valid, display the form; otherwise, show an error message.
 }
 ?>

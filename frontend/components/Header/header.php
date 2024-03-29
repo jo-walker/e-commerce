@@ -6,7 +6,7 @@
             <div class="logo">
                 <img src="../../assets/images/logo.png" alt="Logo of the website">
             </div>
-            <a href="user.html" class="user" alt="user-Image"></a>
+            <a href="../UserProfile/userprof.php" class="user" alt="user-Image"></a>
             <a href="cart.html" class="shopping-cart" alt="cart-Image"></a>
             <a href="wishlist.html" class="heart" alt="heart-Image"></a>
             <!-- Search Option -->

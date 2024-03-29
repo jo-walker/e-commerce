@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
 
+        // Check if the user exists and the password is correct
         if ($user && password_verify($password, $user["Password"])) {
 
             //storing necessary user info in the session
@@ -37,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 
             } else {
             $_SESSION['error'] = "Username or password is incorrect.";
-            header("Location: sign.php");
+            header("Location: ../Login&Logout/sign.php");
             exit();
             }
         }

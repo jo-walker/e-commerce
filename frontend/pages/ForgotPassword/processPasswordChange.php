@@ -2,7 +2,7 @@
 
 <?php
 if (isset($_POST['resetPassword'])) {
-    require 'path/to/connection.php'; // Adjust the path as needed
+    require '../../../database/connection.php'; 
 
     $token = $_POST['token'];
     $newPassword = $_POST['newPassword'];
@@ -16,7 +16,7 @@ if (isset($_POST['resetPassword'])) {
     // Invalidate the token to prevent reuse
 
     // Redirect the user to a confirmation page or the login page
-    header('Location: login.php');
-    exit;
+    // header('Location: ../Login&Logout/sign.php');
+    // exit;
 }
 ?>
