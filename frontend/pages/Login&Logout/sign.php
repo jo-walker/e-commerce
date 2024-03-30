@@ -1,6 +1,10 @@
 <?php
+ob_start(); // Start output buffering
 session_start(); // Start the session at the beginning
+// var_dump($_SESSION['loggedin']); // Temporarily add this for debugging
 require '..\..\..\database\connection.php'; // database config file
+
+session_regenerate_id(true); // Regenerate session ID to prevent session fixation attacks
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){ 
     // Fetch user from the database
@@ -27,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
             //storing necessary user info in the session
             // Check user is in correct role after successful login
+            $_SESSION['loggedin'] = true; // Set the session status to logged in
             $_SESSION["user"] = [
                 'id' => $user["UserID"], // store user id for further db operations 
                 'username' => $user['Username'], 
                 'role' => $user['Role']]; // store user role for role-based access control
-                
                 // Redirect to the home page
                 header("Location: ../Home/index.php?status=success");
                 exit();
@@ -47,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "Error preparing statement: " . $conn->error;
     }
     $conn->close();
+ob_end_clean(); // Clean the output buffer
 ?>  
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../Register/registcss.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/website.css">
     <title>Sign In</title>
     <?php include '../../components/Header/header.php'; ?>
 </head>

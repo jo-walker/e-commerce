@@ -1,4 +1,9 @@
-<!-- header.php -->
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}require '..\..\..\database\connection.php'; // database config file
+
+?>
 <header id="header">
     <nav class="navbar">
         <div class="nav">
@@ -17,8 +22,13 @@
                 </form>
                 <!-- Buttons -->
             </div>
-            <a href="../../pages/Login&Logout/sign.php" class="Sign-up-button">Sign-in</a> <!-- Buttons should have an anchor tag -->
-            <a href="../../pages/Register/register.php" class="Register-button">Register</a>
+             <!-- Check if user is logged in or not to display the buttons  -->
+            <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true): ?>
+                <a href="../../pages/Login&Logout/sign.php" class="Sign-up-button">Sign-in</a>
+                <a href="../../pages/Register/register.php" class="Register-button">Register</a>
+            <?php else: ?>
+                <a href="../../pages/Login&Logout/logout.php" class="Sign-up-button">Logout</a>
+            <?php endif; ?>
         </div>
     </nav>
 

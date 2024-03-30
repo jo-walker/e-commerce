@@ -6,6 +6,7 @@
     <title>Search Results</title>
     <link rel="stylesheet" href="../../assets/css/styles.css"> <!-- Link to external CSS file -->
     <link rel="stylesheet" href="../../assets/css/products.css">
+    <link rel="stylesheet" href="../../assets/css/website.css">
 </head>
 <body>
 
@@ -13,6 +14,9 @@
 include '../../../database/connection.php';
 include '../../components/Header/header.php';
 include '../../../database/queries.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}require '..\..\..\database\connection.php'; // database config file
 
 // Get the search term from URL parameters
 $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; ?>

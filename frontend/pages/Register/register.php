@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             // Success! Redirect to login page, or a success message page
-            header("Location: ../Login/sign.php?status=success"); // redirection URL
+            header("Location: ../Login&Logout/sign.php?status=success"); // redirection URL
             exit();
         } else {
             // Check for duplicate entry or other errors
@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" name="register">Register</button>
         </div>
         <div class="have-account">
-            <p>Already have an Account ?<a href="../Login/sign.php"> Sign in</a></p>
+            <p>Already have an Account ?<a href="../Login&Logout/sign.php"> Sign in</a></p>
         </div>
 
     </form>
