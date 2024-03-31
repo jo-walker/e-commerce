@@ -23,6 +23,10 @@ function getProductById($id) {
     global $conn;
     $sql = "SELECT * FROM products WHERE ProductID = ?";
     $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        // Error handling: Prepare failed
+        return null;
+    }
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -33,11 +37,11 @@ function getProductById($id) {
     }}
 
 // Function to generate HTML for a single product
-function displayProduct($productId) {
-    $product = getProductById($productId);
+function displayProduct($productID) {
+    $product = getProductById($productID);
     if ($product) {
-        //  'product-details.php' is  product details page -> it expects a 'productId' query parameter.
-        $productDetailsUrl = "product-details.php?productId=" . htmlspecialchars($productId);
+        //  'product-details.php' is  product details page -> it expects a 'productID' query parameter.
+        $productDetailsUrl = "product-details.php?productID=" . htmlspecialchars($productID);
 
         $html = '<a href="' . $productDetailsUrl . '" class="product-card-link">';
 
@@ -126,46 +130,72 @@ function deleteUser($userID) {
 
 // add a new product
 function addProduct($name, $description, $price, $stockQuantity, $categoryID, $imageURL) {
-    global $conn;    
+    global $conn;  
+    $result = false; 
+    $conn->autocommit(FALSE); // Turn off auto-commit to manage transactions manually
+
     try {
+        // prepare the sql statement
         $sql = "INSERT INTO Products (Name, Description, Price, StockQuantity, CategoryID, ImageURL)
                 VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         if (!$stmt) {
             throw new Exception($conn->error);
         }
+
+        // bind the parameters and execute the statement
         $stmt->bind_param("ssdiss", $name, $description, $price, $stockQuantity, $categoryID, $imageURL);
-        $stmt->execute();
-        $conn->commit();
-        if ($stmt->error) {
-            throw new Exception($stmt->error);
+
+        // Execute the statement
+        if (!$stmt->execute()) {
+            throw new Exception("Execute error: " . $stmt->error);
         }
-        return true;
+
+        // Commit the transaction
+        if (!$conn->commit()) {
+            throw new Exception("Commit failed: " . $conn->error);
+        }
+        $result = true; // Indicate success
+        echo "Product added successfully."; // Feedback
     } catch (Exception $e) {
-        error_log($e->getMessage()); // Log error to a file
-        return false; // Consider returning $e->getMessage() for more detailed error feedback
+        $conn->rollback(); // Roll back the transaction on error
+        error_log($e->getMessage()); // Log the error
+        echo "Error adding the product: " . $e->getMessage(); // Provide error feedback
+    } finally {
+        $stmt->close(); // Ensure the statement is closed
+        $conn->autocommit(TRUE); // Turn auto-commit back on
     }
+    
+    return $result; // Return true on success, false on failure
 }
 
 // update an existing product
 function updateProduct($productID, $name, $description, $price, $stockQuantity, $categoryID, $imageURL) {
     global $conn;
-    $sql = "UPDATE Products
-    SET Name = '$name', Description = '$description', Price = $price, StockQuantity = $stockQuantity, CategoryID = $categoryID, ImageURL = '$imageURL'
-    WHERE ProductID = $productID";
-    $result = $conn->query($sql);
-    return $result;
+    $sql = "UPDATE Products SET Name = ?, Description = ?, Price = ?, StockQuantity = ?, CategoryID = ?, ImageURL = ? WHERE ProductID = ?";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        // Error handling
+        return false;
+    }
+    $stmt->bind_param("ssdissi", $name, $description, $price, $stockQuantity, $categoryID, $imageURL, $productID);
+    $success = $stmt->execute();
+    $stmt->close();
+    return $success;
 }
+
+
 // update stock fcn
 function updateStock($productID, $newStock) {
     global $conn;
     $sql = "UPDATE Products SET StockQuantity = ? WHERE ProductID = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $newStock, $productID);
-    if (!$stmt->execute()) {
-        return false; // You could also return $conn->error here for debugging
+    $stmt = $conn->prepare($sql); // Prepare the SQL statement for execution 
+    if ($stmt) { // Check if the statement was prepared successfully 
+        $stmt->bind_param("ii", $newStock, $productID); // Bind the parameters to the SQL statement 
+        return $stmt->execute(); // Execute the SQL statement if the parameters were bound successfully
+    } else {
+        return false;
     }
-    return true;
 }
 // update price fcn
 function updatePrice($productID, $newPrice) {
@@ -186,4 +216,30 @@ function deleteProduct($productID) {
     $result = $conn->query($sql);
     return $result;
 }
+
+// query to join the products and categories tables
+function join_product_table(){
+    global $conn;
+    $sql = "SELECT p.ProductID, p.Name, p.Description, p.Price, p.StockQuantity, p.CategoryID, p.ImageURL, 
+    c.CategoryName AS categoryName 
+    FROM products p 
+    LEFT JOIN categories c 
+    ON c.CategoryID = p.CategoryID 
+    ORDER BY p.ProductID ASC";
+
+    $conn->query($sql);
+    // Execute the query
+    $result = $conn->query($sql);
+
+    // Check if the query was successful
+    if(!$result) {
+        // Handle error - notify the administrator, log to a file, show an error screen, etc.
+        die("SQL error: " . $conn->error);
+    }
+    
+    // Fetch all rows as an associative array
+    $products = $result->fetch_all(MYSQLI_ASSOC);
+    
+    return $products;
+  }
 ?>
