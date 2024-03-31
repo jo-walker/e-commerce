@@ -42,7 +42,7 @@ ini_set('display_errors', 1);
                         </div>
                         <div class="product-info">
                             <!-- <h2 class="product-brand"><?php echo htmlspecialchars($product['Brand']); ?></h2> -->
-                            <p class="product-description"><?php echo htmlspecialchars($product['Description']); ?></p>
+                            <!-- <p class="product-description"><?php echo htmlspecialchars($product['Description']); ?></p> -->
                             <span class="price">$<?php echo htmlspecialchars($product['Price']); ?></span>
                         </div>
                     </div>

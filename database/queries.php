@@ -126,11 +126,25 @@ function deleteUser($userID) {
 
 // add a new product
 function addProduct($name, $description, $price, $stockQuantity, $categoryID, $imageURL) {
-    global $conn;
-    $sql = "INSERT INTO Products (Name, Description, Price, StockQuantity, CategoryID, ImageURL)
-    VALUES ('$name', '$description', $price, $stockQuantity, $categoryID, '$imageURL')";
-    $result = $conn->query($sql);
-    return $result;
+    global $conn;    
+    try {
+        $sql = "INSERT INTO Products (Name, Description, Price, StockQuantity, CategoryID, ImageURL)
+                VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception($conn->error);
+        }
+        $stmt->bind_param("ssdiss", $name, $description, $price, $stockQuantity, $categoryID, $imageURL);
+        $stmt->execute();
+        $conn->commit();
+        if ($stmt->error) {
+            throw new Exception($stmt->error);
+        }
+        return true;
+    } catch (Exception $e) {
+        error_log($e->getMessage()); // Log error to a file
+        return false; // Consider returning $e->getMessage() for more detailed error feedback
+    }
 }
 
 // update an existing product
@@ -142,6 +156,29 @@ function updateProduct($productID, $name, $description, $price, $stockQuantity, 
     $result = $conn->query($sql);
     return $result;
 }
+// update stock fcn
+function updateStock($productID, $newStock) {
+    global $conn;
+    $sql = "UPDATE Products SET StockQuantity = ? WHERE ProductID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $newStock, $productID);
+    if (!$stmt->execute()) {
+        return false; // You could also return $conn->error here for debugging
+    }
+    return true;
+}
+// update price fcn
+function updatePrice($productID, $newPrice) {
+    global $conn;
+    $sql = "UPDATE Products SET Price = ? WHERE ProductID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("di", $newPrice, $productID);
+    if (!$stmt->execute()) {
+        return false;
+    }
+    return true;
+}
+
 // delete a product
 function deleteProduct($productID) {
     global $conn;

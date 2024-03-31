@@ -7,7 +7,8 @@ if (session_status() == PHP_SESSION_NONE) {
 
 require '..\..\..\database\connection.php'; // database config file
 require '..\..\..\database\queries.php'; // database queries file
-require 'deleteAccount.php'; // delete account file
+require '..\..\..\database\utilities.php'; // utility functions file
+// require 'deleteAccount.php'; // delete account file
 
 $stmt = $conn->prepare("SELECT Username, Email, CreatedAt, LastLogin FROM Users WHERE UserID = ?");
 if (!$stmt) {
@@ -49,21 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update-info'])) {
     $updateStmt = $conn->prepare("UPDATE Users SET Username = ?, Email = ? WHERE UserID = ?");
     $updateStmt->bind_param("ssi", $username, $email, $userID);
 
-    // Delete account
-    // if (isset($_POST['delete-account'])) {
-    //     $deleteStmt = $conn->prepare("DELETE FROM Users WHERE UserID = ?");
-    //     $deleteStmt->bind_param("i", $userID);
-    //     if ($deleteStmt->execute()) {
-    //         echo "Account deleted successfully.";
-    //         // Redirect to the home page
-    //         header("Location: ../Home/index.php");
-    //         exit();
-    //     } else {
-    //         echo "Error deleting account: " . $conn->error;
-    //     }
-    //     $deleteStmt->close();
-    // }
-
     // Execute and check if successful
     if ($updateStmt->execute()) {
         echo "Information updated successfully.";
@@ -99,6 +85,9 @@ ob_end_clean(); // Clean the output buffer
             <nav>
                 <ul>
                     <li><a href="userprof.php">Personal Info</a></li>
+                    <?php if (isAdmin()): ?>
+                                    <li><a href="inventory.php">Manage Inventory</a></li>
+                    <?php endif; ?>                   
                     <li><a href="../Home/index.php">Home</a></li>
                     <li><a href="../Cart/cart.html">Cart</a></li>
                     <li><a href="../Checkout/checkout.html">Checkout</a></li>
@@ -141,15 +130,15 @@ ob_end_clean(); // Clean the output buffer
                     <p><a href="../ForgotPassword/forgotpass.php">Change Password</a></p>
 
                     <!-- Delete Account Button -->
-                    <form action="deleteAccount.php" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
-    <input type="hidden" name="userID" value="<?php echo htmlspecialchars($userID); ?>">
-    <button type="submit" name="delete-account">Delete Account</button>
-</form>
+                    <!-- <form action="deleteAccount.php" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
+                    <input type="hidden" name="userID" value="<?php echo htmlspecialchars($userID); ?>">
+                    <button type="submit" name="delete-account">Delete Account</button>
+                    </form> -->
 
                     <button type="button" id="cancel-edit-btn">Cancel</button>
                 </form>
                 </div>
-            </div>
+            </div>  
             <div id="up-order-history">
                 <h3>Order History</h3>
                 <!-- dummy order data -->

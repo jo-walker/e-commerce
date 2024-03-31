@@ -23,7 +23,8 @@ if ($productId > 0) {
         // Display the product details
         echo '<div class="product-item">'; 
         echo '<div class="product-image">';
-        echo '<img src="' . htmlspecialchars($product['ImagePath']) . '" alt="' . htmlspecialchars($product['Name']) . '">'; // TO-DO: Image path
+        $correctedPath = "." . $product['ImageURL'];
+        echo '<img src="' . htmlspecialchars($correctedPath) . '" alt="' . htmlspecialchars($product['Name']) . '">';
         echo '</div>'; // Close .product-image
         echo '<div class="product-details">';
         echo '<h1>' . htmlspecialchars($product['Name']) . '</h1>';
