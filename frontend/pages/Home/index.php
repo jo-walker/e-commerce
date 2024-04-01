@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="../../assets/css/website.css">
     <!-- <link rel="stylesheet" href="../../assets/css/styles.css"> -->
     <script src="../index.js"></script>
-    <title>Luna Ashwood</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>LaneWood</title>
     <!-- Include Header Component -->
     <?php include '../../components/Header/header.php'; ?>
 <?php  error_reporting(E_ALL);
@@ -42,8 +43,7 @@ ini_set('display_errors', 1);
                     <div class="product-image">
                     <span class="discount-tag">50% off</span> <!-- If applicable -->
                             <img src="<?php echo htmlspecialchars($product['ImageURL']); ?>" alt="Product Image" class="product-thumb"> <!-- TO-DO: Image path -->
-                            echo '<a href="..\ProductDetails\productD.js?productId=' . htmlspecialchars($product['ProductID']) . '">
-                            <button class="card-btn">View</button></a>';
+                            <a href="..\ProductDetails\productD.php?productId=<?php echo htmlspecialchars($product['ProductID']); ?>" class="card-btn">View</a>
                                 <button class="cart-btn">Add to cart</button>
                         </div>
                         <div class="product-info">
@@ -54,13 +54,13 @@ ini_set('display_errors', 1);
                     </div>
                 <?php endforeach; ?>
             </div>
-        </section>
-            <!-- Product cards using product-card.html-->
-            <div class="product-container">
-                <!-- Include Product Card -->
-                <include src="../../components/Product/product-card.html"></include>
-            </div>
-        </section>
+            </section>
+                <!-- Product cards using product-card.html-->
+                <div class="product-container">
+                    <!-- Include Product Card -->
+                    <include src="../../components/Product/product-card.html"></include>
+                </div>
+            </section>
     </main>
 
     <!-- Include Footer Component -->

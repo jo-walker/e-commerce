@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel="stylesheet" href="../../assets/css/styles.css"> <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="../../assets/css/products.css">
+
     <link rel="stylesheet" href="../../assets/css/website.css">
 </head>
 <body>
@@ -36,7 +35,7 @@ $searchTerm = isset($_GET['searchTerm']) ? $_GET['searchTerm'] : ''; ?>
                 echo '<h2>' . htmlspecialchars($product['Name']) . '</h2>'; // Product name
                 echo '<p>' . htmlspecialchars($product['Description']) . '</p>'; // Product description
                 echo '<p class="product-price">$' . htmlspecialchars($product['Price']) . '</p>'; // Product price
-                echo '<a href="..\ProductDetails\productD.php?productId=' . htmlspecialchars($product['ProductID']) . '" class="view-details">View Details</a>'; // Link to product details
+                echo '<a href="..\ProductDetails\productD.php?productId=' . htmlspecialchars($product['ProductID']) . '" class="view-details">View</a>'; // Link to product details
                 echo '</div>';
                 echo '</div>'; // Close .product-item
             }

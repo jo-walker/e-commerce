@@ -19,17 +19,15 @@ if ($productId > 0) {
     $product = getProductById($productId);
     if ($product) {
         // Display the product details
-        echo '<div class="product-item">'; 
-        echo '<div id="productImage">';
-        $correctedPath = "." . $product['ImageURL'];
-        echo '<img src="' . htmlspecialchars($correctedPath) . '" alt="' . htmlspecialchars($product['Name']) . '">';
-        echo '</div>'; // Close .product-image
         echo '<div class="product-details">';
+        echo '<div class="product-image">';
+        $correctedPath = "../../assets/images/" . $product['ImageURL']; // Adjust as necessary
+        echo '<img src="' . htmlspecialchars($correctedPath) . '" alt="' . htmlspecialchars($product['Name']) . '" class="product-thumb">';
+        echo '</div>'; // Close .product-image
         echo '<h1>' . htmlspecialchars($product['Name']) . '</h1>';
         echo '<p>' . htmlspecialchars($product['Description']) . '</p>';
         echo '<p>Price: $' . htmlspecialchars($product['Price']) . '</p>';
         echo '</div>'; // Close .product-details
-        echo '</div>'; // Close .product-item
     } else {
         echo '<p>Product not found.</p>';
     }

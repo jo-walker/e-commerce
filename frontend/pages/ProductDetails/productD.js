@@ -16,3 +16,7 @@ $.ajax({
         // Populate other product details as needed
     }
 });
+function getProductIdFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('productId'); // Make sure 'productId' matches the query parameter name in your URL
+}

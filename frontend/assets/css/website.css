@@ -296,7 +296,7 @@
 .main-section {
     width: 100%;
     height: calc(100vh - 150px);
-    background-image: url('frontend/assets/images/background.jpg');
+    background-image: url('../../assets/images/background.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -376,18 +376,18 @@
 
 .product-image {
     position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
+    width: 100%; /* Full width of the container */
+    height: 300px; /* Set a fixed height for consistency */
+    overflow: hidden; /* Hide parts of the image that exceed the container */
 }
 
 .product-thumb {
-    border-radius: 15px;
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    color: white;
+    width: 100%; /* Image width should be 100% of the container */
+    height: 100%; /* Image height should be 100% of the container */
+    object-fit: cover; /* Cover the container's area completely */
+    object-position: center; /* Center the image within the container */
 }
+
 
 .discount-tag {
     position: absolute;
@@ -1215,4 +1215,68 @@ a:hover {
     width: 100%; /* Make sure image covers the full width */
     height: auto; /* Maintain aspect ratio */
     display: block;
+}
+/* Styles for the View button */
+.view-details {
+    display: block; /* Make it inline-block for padding and margins */
+    padding: 10px 20px; /* Add some padding around the text */
+    background-color: #af6565; /* Use a primary color for the button */
+    color: #ffffff; /* Text color for the button */
+    text-decoration: none; /* Remove underline from the link */
+    border-radius: 5px; /* Optional: rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    font-weight: bold; /* Make text bold */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+/* Hover effect */
+.view-details:hover {
+    background-color: #3e0c0c; /* Darken the button a bit when hovered */
+    color: #ffffff; /* Ensure text color remains the same */
+    text-decoration: none; /* Continue to remove underline */
+}
+
+
+/* Product Details Specific Styles */
+.product-details-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.product-details-image img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 50px;
+}
+.product-image img {
+    width: auto; /* Adjust this to control image scaling */
+    height: auto; /* Adjust this to control image scaling */
+    max-width: 100%; /* Ensures image is not larger than its container */
+    max-height: 100%; /* Adjust based on your layout */
+    display: block; /* Removes any extra space beneath the image */
+}
+
+.product-details-info {
+    max-width: 600px;
+}
+
+.product-details-info h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 24px;
+    color: #eb211d;
 }
