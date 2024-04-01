@@ -170,19 +170,29 @@ function addProduct($name, $description, $price, $stockQuantity, $categoryID, $i
 }
 
 // update an existing product
-function updateProduct($productID, $name, $description, $price, $stockQuantity, $categoryID, $imageURL) {
+function updateProduct($ProductID, $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageURL) {
     global $conn;
     $sql = "UPDATE Products SET Name = ?, Description = ?, Price = ?, StockQuantity = ?, CategoryID = ?, ImageURL = ? WHERE ProductID = ?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         // Error handling
+        error_log("Prepare failed: " . $conn->error);
         return false;
     }
-    $stmt->bind_param("ssdissi", $name, $description, $price, $stockQuantity, $categoryID, $imageURL, $productID);
-    $success = $stmt->execute();
+    if (!$stmt->bind_param("ssdissi", $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageURL, $ProductID)) {
+        // Error handling
+        error_log("Bind failed: " . $stmt->error);
+        return false;
+    }
+    if (!$stmt->execute()) {
+        // Error handling
+        error_log("Execute failed: " . $stmt->error);
+        return false;
+    }
     $stmt->close();
-    return $success;
+    return true;
 }
+
 
 
 // update stock fcn
