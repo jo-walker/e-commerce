@@ -12,6 +12,7 @@ $.ajax({
         $('#productTitle').text(response.name);
         $('#productDescription').text(response.description);
         $('#productPrice').text('$' + response.price);
+        $('#productImage').attr('src', response.imageURL);
         // Populate other product details as needed
     }
 });
