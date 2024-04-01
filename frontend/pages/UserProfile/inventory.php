@@ -136,39 +136,42 @@ $products = getProducts(); // to fetch all products
 <body>
     <?php include '../../components/Header/header.php'; ?>
 
-    <h1>Inventory Management</h1>
+    <h1 class="manage">Inventory Management</h1>
 
     <div>
-        <a href="addProd.php" class="">Add New Product</a>
+        <a href="addProd.php" class=""><button class="add-product-btn">Add New Product</button>
+</a>
     </div>
-    <table class="">
+    <div class="container-inventory">
+    <table class="inventory">
         <thead>
             <tr>
-                <th>Photo</th>
-                <th>Product Title</th>
-                <th>Category</th>
-                <th>In-Stock</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th id="tr">Photo</th>
+                <th id="tr">Title</th>
+                <th id="tr">Category</th>
+                <th id="tr">In-Stock</th>
+                <th id="tr">Price</th>
+                <th id="tr">Actions</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($products as $product): ?>
-            <tr>
+            <tr id ="captions">
                 <td><img src="<?php echo $product['ImageURL']; ?>" alt="<?php echo $product['Name']; ?>" style="width:50px;height:50px;"></td>
                 <td><?php echo $product['Name']; ?></td>
                 <td><?php echo $product['Description']; ?></td>
-                <td><?php echo $product['CategoryID']; ?></td>
+                <td ><?php echo $product['CategoryID']; ?></td>
                 <td><?php echo $product['StockQuantity']; ?></td>
                 <td><?php echo $product['Price']; ?></td>
                 <td>
-                    <a href="editProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="">Edit</a>
-                    <a href="deleteProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                    <a href="editProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="edit-b">Edit</a>
+                    <a href="deleteProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="dlt-b" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
 
 <?php include '../../components/Footer/footer.html'; ?>
 </body>

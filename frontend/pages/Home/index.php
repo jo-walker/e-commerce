@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/website.css">
-    <!-- <link rel="stylesheet" href="../../assets/css/styles.css"> -->
     <script src="../index.js"></script>
-    <title>Luna Ashwood</title>
+    <title>Lanewood Clothing</title>
     <!-- Include Header Component -->
     <?php include '../../components/Header/header.php'; ?>
 <?php  error_reporting(E_ALL);
