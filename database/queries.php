@@ -53,6 +53,8 @@ function displayProduct($productID) {
         $html .= '<h3>' . htmlspecialchars($product['Name']) . '</h3>';
         $html .= '<p>' . htmlspecialchars($product['Description']) . '</p>';
         $html .= '<p>Price: $' . htmlspecialchars($product['Price']) . '</p>';
+        $html .= '<p>Stock: ' . htmlspecialchars($product['StockQuantity']) . '</p>';
+        $html .= '<p>Category: ' . htmlspecialchars($product['CategoryID']) . '</p>';
         $html .= '</div>'; // Close product-info
         $html .= '</div>'; // Close product-card
         $html .= '</a>'; // Close product-card-link
@@ -129,14 +131,14 @@ function deleteUser($userID) {
 // database queries as an admin
 
 // add a new product
-function addProduct($name, $description, $price, $stockQuantity, $categoryID, $imageURL) {
+function addProduct($name, $description, $price, $stockQuantity, $categoryID, $imageURL, $color) {
     global $conn;  
     $result = false; 
     $conn->autocommit(FALSE); // Turn off auto-commit to manage transactions manually
 
     try {
         // prepare the sql statement
-        $sql = "INSERT INTO Products (Name, Description, Price, StockQuantity, CategoryID, ImageURL)
+        $sql = "INSERT INTO Products (Name, Description, Price, StockQuantity, CategoryID, ImageURL, Color)
                 VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         if (!$stmt) {
@@ -144,7 +146,7 @@ function addProduct($name, $description, $price, $stockQuantity, $categoryID, $i
         }
 
         // bind the parameters and execute the statement
-        $stmt->bind_param("ssdiss", $name, $description, $price, $stockQuantity, $categoryID, $imageURL);
+        $stmt->bind_param("ssdiss", $name, $description, $price, $stockQuantity, $categoryID, $imageURL, $color);
 
         // Execute the statement
         if (!$stmt->execute()) {
@@ -170,16 +172,16 @@ function addProduct($name, $description, $price, $stockQuantity, $categoryID, $i
 }
 
 // update an existing product
-function updateProduct($ProductID, $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageURL) {
+function updateProduct($ProductID, $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageUR, $Color) {
     global $conn;
-    $sql = "UPDATE Products SET Name = ?, Description = ?, Price = ?, StockQuantity = ?, CategoryID = ?, ImageURL = ? WHERE ProductID = ?";
+    $sql = "UPDATE Products SET Name = ?, Description = ?, Price = ?, StockQuantity = ?, CategoryID = ?, ImageURL = ? , Color = ? WHERE ProductID = ?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         // Error handling
         error_log("Prepare failed: " . $conn->error);
         return false;
     }
-    if (!$stmt->bind_param("ssdissi", $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageURL, $ProductID)) {
+    if (!$stmt->bind_param("ssdisssi", $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageURL, $Color, $ProductID)) {
         // Error handling
         error_log("Bind failed: " . $stmt->error);
         return false;

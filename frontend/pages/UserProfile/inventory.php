@@ -151,6 +151,7 @@ $products = getProducts(); // to fetch all products
                 <th id="tr">Category</th>
                 <th id="tr">In-Stock</th>
                 <th id="tr">Price</th>
+                <th id="tr">Color</th>
                 <th id="tr">Actions</th>
             </tr>
         </thead>
@@ -163,6 +164,7 @@ $products = getProducts(); // to fetch all products
                 <td ><?php echo $product['CategoryID']; ?></td>
                 <td><?php echo $product['StockQuantity']; ?></td>
                 <td><?php echo $product['Price']; ?></td>
+                <td><?php echo $product['Color']; ?></td>
                 <td>
                     <a href="editProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="edit-b">Edit</a>
                     <a href="deleteProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="dlt-b" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>

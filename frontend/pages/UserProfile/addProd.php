@@ -99,13 +99,15 @@ ini_set('display_errors', 1);
         <br>
         <label for="productCategory" id="productCategoryLabel">Category:</label>
         <select id="productCategory" name="productCategory" required>
-            <!-- PHP loop to generate options -->
-            <!-- <?php foreach ($categories as $category): ?>
-            <option value="<?php echo $category['CategoryID']; ?>"><?php echo $category['CategoryName']; ?></option>
-            <?php endforeach; ?> -->
-            <option value="1">Category 1</option>
-            <option value="2">Category 2</option>
-            <option value="3">Category 3</option>
+            <?php
+            // Fetch categories from the database
+            $categories = getCategories(); // Assuming you have a function to retrieve categories
+            
+            // Loop through the categories and generate options
+            foreach ($categories as $category) {
+                echo '<option value="' . $category['CategoryID'] . '">' . $category['CategoryName'] . '</option>';
+            }
+            ?>
         </select>
         <!-- Add more fields as needed -->
         <input type="submit" id="addProductBtn" value="Add Product">
