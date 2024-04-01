@@ -131,73 +131,45 @@ $products = getProducts(); // to fetch all products
     <title>Inventory Management</title>
     <!-- Include necessary styles -->
     <link rel="stylesheet" href="../../assets/css/website.css">
+    <script src="inventory.js"></script>
 </head>
-
 <body>
+    <?php include '../../components/Header/header.php'; ?>
+
     <h1>Inventory Management</h1>
-    <!-- Add inventory management functionalities here -->
 
-    <!-- add product  -->
-    <!-- <form action="inventory.php" method="post">
-        <h2>Add Product</h2>
-        <div class="input-group">
-            <label for="name">Product Name:</label>
-            <input type="text" name="name" id="name" required>
-        </div>
-        <div class="input-group">
-            <label for="description">Description:</label>
-            <input type="text" name="description" id="description" required>
-        </div>
-        <div class="input-group">
-            <label for="price">Price:</label>
-            <input type="number" name="price" id="price" required>
-        </div>
-        <div class="input-group">
-            <label for="stock">Stock Quantity:</label>
-            <input type="number" name="stock" id="stock" required>
-        </div>
-        <div class="input-group">
-            <?php $categories = getCategories(); ?>
+    <div>
+        <a href="addProd.php" class="">Add New Product</a>
+    </div>
+    <table class="">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Product Title</th>
+                <th>Category</th>
+                <th>In-Stock</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($products as $product): ?>
+            <tr>
+                <td><img src="<?php echo $product['ImageURL']; ?>" alt="<?php echo $product['Name']; ?>" style="width:50px;height:50px;"></td>
+                <td><?php echo $product['Name']; ?></td>
+                <td><?php echo $product['Description']; ?></td>
+                <td><?php echo $product['CategoryID']; ?></td>
+                <td><?php echo $product['StockQuantity']; ?></td>
+                <td><?php echo $product['Price']; ?></td>
+                <td>
+                    <a href="editProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="">Edit</a>
+                    <a href="deleteProd.php?ProductID=<?php echo $product['ProductID']; ?>" class="" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
-            <label for="category">Category:</label>
-            <select name="category" id="category" required> 
-                <?php foreach ($categories as $category): ?> 
-                    <option value="<?php echo htmlspecialchars($category['CategoryID']); ?>">
-                        <?php echo htmlspecialchars($category['CategoryName']); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-
-        </div>
-        <div class="input-group">
-            <label for="image">Image URL:</label>
-            <input type="text" name="image" id="image" required>
-        </div>
-        <div class="input-group">
-            <button type="submit" name="add-product">Add Product</button>
-        </div> -->
-
-        <!-- update product -->
-        <h2>Update Product</h2>
-        <div class="input-group">
-            <label for="product-id">Product ID:</label>
-            <input type="number" name="product-id" id="product-id" required>
-        </div>
-        <div class="input-group">
-            <label for="new-stock">New Stock Quantity:</label>
-            <input type="number" name="new-stock" id="new-stock" required>
-        </div>
-        <div class="input-group">
-            <button type="submit" name="update-stock">Update Stock</button>
-        </div>
-        <div class="input-group">
-            <label for="new-price">New Price:</label>
-            <input type="number" name="new-price" id="new-price" required>
-        </div>
-        <div class="input-group">
-            <button type="submit" name="update-price">Update Price</button>
-        </div>
-
-    </form>
+<?php include '../../components/Footer/footer.html'; ?>
 </body>
 </html>
