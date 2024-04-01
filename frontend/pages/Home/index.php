@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/website.css">
-    <!-- <link rel="stylesheet" href="../../assets/css/styles.css"> -->
     <script src="../index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>LaneWood</title>
+    <title>Lanewood Clothing</title>
     <!-- Include Header Component -->
     <?php include '../../components/Header/header.php'; ?>
 <?php  error_reporting(E_ALL);

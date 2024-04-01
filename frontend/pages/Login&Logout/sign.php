@@ -79,7 +79,7 @@ ob_end_clean(); // Clean the output buffer
             <input type="password" name="password" id="password" autocomplete="new-password" required>
         </div>
         <div class="input-group">
-            <button type="submit" name="sign-in" id="sign-in">Sign in</button>
+            <button type="submit" name="sign-in" id="button-us">Sign in</button>
         </div>
         <div class="input-group">
             <a href="../ForgotPassword/forgotpass.php" id="ForgotPassword" >Forgot Password?</a>

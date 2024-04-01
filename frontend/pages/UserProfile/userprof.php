@@ -158,8 +158,8 @@ ob_end_clean(); // Clean the output buffer
             <div id="up-payment-methods">
                 <h3 id="h3">Payment Methods</h3>
                 <!-- dummy payment data -->
-                <p id="data">Visa ending in 1234</p>
-                <p id="data">Mastercard ending in 5678</p>
+                <p id="data">Debit </p>
+                <p id="data">Mastercard </p>
             </div>            
         </div>
     </div>

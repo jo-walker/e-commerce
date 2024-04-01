@@ -52,38 +52,66 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
 <html>
 <head>
     <title>Add New Product</title>
+    <link rel="stylesheet" href="../../assets/css/website.css">
+     <!-- Include Header Component -->
+     <?php include '../../components/Header/header.php'; ?>
+<?php  error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
 </head>
 <body>
-    <form action="addProd.php" method="post" enctype="multipart/form-data">
+<div class="profile-container">
+        <div class="sidebar">
+        <nav class="usernav">
+            <h2 id="h1">Profile</h2>
+                <ul>
+                    <li><a href="userprof.php" id="li">Personal Info</a></li>
+                    <?php if (isAdmin()): ?>
+                                    <li><a href="inventory.php" id="li">Manage Inventory</a></li>
+                    <?php endif; ?>                   
+                    <li><a href="../Home/index.php" id="li">Home</a></li>
+                    <li><a href="../Cart/cart.html" id="li">Cart</a></li>
+                    <li><a href="../Checkout/checkout.html"id="li">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+<form id="productForm" action="addProd.php" method="post" enctype="multipart/form-data">
+<div class="container-pro">
         <!-- Input fields for product details -->
-        <label for="productName">Product Name:</label>
+        <label for="productName" id="productNameLabel">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
         <br>
-        <label for="productDescription">Description:</label>
+        <label for="productDescription" id="productDescriptionLabel">Description:</label>
         <textarea id="productDescription" name="productDescription" required></textarea>
         <br>
-        <label for="productPrice">Price:</label>
+        <label for="productPrice" id="productPriceLabel">Price:</label>
         <input type="number" id="productPrice" name="productPrice" required>
         <br>
-        <label for="productStock">Stock:</label>
+        <label for="productStock" id="productStockLabel">Stock:</label>
         <input type="number" id="productStock" name="productStock" required>
         <br>
-        <label for="productImage">Product Image:</label>
+        <label for="productImage" id="productImageLabel">Product Image:</label>
         <input type="file" id="productImage" name="productImage" accept="image/*" required>
         <br>
-        <label for="productCategory">Category:</label>
+        <label for="productCategory" id="productCategoryLabel">Category:</label>
         <select id="productCategory" name="productCategory" required>
-            <?php foreach ($categories as $category): ?>
+            <!-- PHP loop to generate options -->
+            <!-- <?php foreach ($categories as $category): ?>
             <option value="<?php echo $category['CategoryID']; ?>"><?php echo $category['CategoryName']; ?></option>
-            <?php endforeach; ?>
+            <?php endforeach; ?> -->
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
         </select>
         <!-- Add more fields as needed -->
+        <input type="submit" id="addProductBtn" value="Add Product">
+</div>
 
-        <input type="submit" value="Add Product">
     </form>
+</div>
 </body>
 </html>

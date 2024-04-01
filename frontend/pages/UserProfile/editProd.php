@@ -51,31 +51,52 @@ if (isset($_POST['update_product'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Product</title>
+<title>Edit Product</title>
+<link rel="stylesheet" href="../../assets/css/website.css">
+     <!-- Include Header Component -->
+     <?php include '../../components/Header/header.php'; ?>
+<?php  error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>    
 </head>
 <body>
+<div class="profile-container">
+        <div class="sidebar">
+        <nav class="usernav">
+            <h2 id="h1">Profile</h2>
+                <ul>
+                    <li><a href="userprof.php" id="li">Personal Info</a></li>
+                    <?php if (isAdmin()): ?>
+                                    <li><a href="inventory.php" id="li">Manage Inventory</a></li>
+                    <?php endif; ?>                   
+                    <li><a href="../Home/index.php" id="li">Home</a></li>
+                    <li><a href="../Cart/cart.html" id="li">Cart</a></li>
+                    <li><a href="../Checkout/checkout.html"id="li">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
 <?php if (!empty($feedbackMessage)) echo "<p>$feedbackMessage</p>"; ?>
-<form method="post" action="editProd.php?ProductID=<?php echo $productID; ?>" enctype="multipart/form-data">
+<form id="productForm" method="post" action="editProd.php?ProductID=<?php echo $productID; ?>" enctype="multipart/form-data">
     <!-- Form fields -->
-    <label for="productName">Product Name:</label>
-    <input type="text" name="productName" value="<?php echo htmlspecialchars($product['Name']); ?>" required>
+    <label for="productName"  id="productNameLabel">Product Name:</label>
+    <input type="text" name="productName"  id="productName" value="<?php echo htmlspecialchars($product['Name']); ?>" required>
 
-    <label for="productDescription">Description:</label>
-    <input type="text" name="productDescription" value="<?php echo htmlspecialchars($product['Description']); ?>" required>
+    <label for="productDescription" id="productDescriptionLabel">Description:</label>
+    <input type="text" name="productDescription"  id="productDescription" value="<?php echo htmlspecialchars($product['Description']); ?>" required>
 
-    <label for="productPrice">Price:</label>
-    <input type="number" step="0.01" name="productPrice" value="<?php echo htmlspecialchars($product['Price']); ?>" required>
+    <label for="productPrice" id="productDescriptionLabel">Price:</label>
+    <input type="number" step="0.01" name="productPrice" id="productPrice" value="<?php echo htmlspecialchars($product['Price']); ?>" required>
 
-    <label for="productStock">Stock:</label>
-    <input type="number" name="productStock" value="<?php echo htmlspecialchars($product['StockQuantity']); ?>" required>
+    <label for="productStock" id="productDescriptionLabel">Stock:</label>
+    <input type="number" name="productStock" id="productStock" value="<?php echo htmlspecialchars($product['StockQuantity']); ?>" required>
 
-    <label for="ImageURL">Product Image:</label>
-    <input type="file" id="ImageURL" name="ImageURL" accept="image/*">
+    <label for="ImageURL" id="productDescriptionLabel">Product Image:</label>
+    <input type="file" id="ImageURL"  name="ImageURL" accept="image/*">
     <?php if (!empty($product['ImageURL'])): ?>
         <img src="<?php echo $product['ImageURL']; ?>" alt="Product Image" style="max-width: 200px;">
     <?php endif; ?>
 
-    <label for="productCategory">Category:</label>
+    <label for="productCategory" id="productDescriptionLabel">Category:</label>
     <select name="productCategory" required>
         <?php foreach ($categories as $category): ?>
             <option value="<?php echo $category['CategoryID']; ?>" <?php if ($category['CategoryID'] == $product['CategoryID']) echo 'selected'; ?>>
@@ -84,7 +105,7 @@ if (isset($_POST['update_product'])) {
         <?php endforeach; ?>
     </select>
 
-    <button type="submit" name="update_product">Update Product</button>
+    <button type="submit" id="addProductBtn" name="update_product">Update Product</button>
 </form>
 </body>
 </html>
