@@ -16,20 +16,20 @@ function requireAdmin() {
 }
 
 // Check if the form has been submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addProduct'])) {
-    // Process adding a new product
-    $productName = $_POST['productName']; // Assume proper validation
-    // ... more processing and validation ...
-    $stmt = $conn->prepare("INSERT INTO Products (name, price, stock) VALUES (?, ?, ?)");
-    $stmt->bind_param("sdi", $productName, $productPrice, $productStock);
-    if ($stmt->execute()) {
-        echo "Product added successfully";
-    } else {
-        echo "Error adding product: " . $conn->error;
-    }
-    $stmt->close();
-    // Redirect or further processing
-}
+// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addProduct'])) {
+//     // Process adding a new product
+//     $productName = $_POST['productName']; // Assume proper validation
+//     // ... more processing and validation ...
+//     $stmt = $conn->prepare("INSERT INTO Products (name, price, stock) VALUES (?, ?, ?)");
+//     $stmt->bind_param("sdi", $productName, $productPrice, $productStock);
+//     if ($stmt->execute()) {
+//         echo "Product added successfully";
+//     } else {
+//         echo "Error adding product: " . $conn->error;
+//     }
+//     $stmt->close();
+//     // Redirect or further processing
+// }
 
 ?>
 

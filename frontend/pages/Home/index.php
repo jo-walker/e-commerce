@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/website.css">
-
     <title>Luna Ashwood</title>
     <!-- Include Header Component -->
     <?php include '../../components/Header/header.php'; ?>
@@ -40,7 +39,7 @@ ini_set('display_errors', 1);
                 <div class="product-card">
                     <div class="product-image">
                     <span class="discount-tag">50% off</span> <!-- If applicable -->
-                            <img src="<?php echo htmlspecialchars($product['ImagePath']); ?>" alt="Product Image" class="product-thumb"> <!-- TO-DO: Image path -->
+                            <img src="<?php echo htmlspecialchars($product['ImageURL']); ?>" alt="Product Image" class="product-thumb"> <!-- TO-DO: Image path -->
                             echo '<a href="..\ProductDetails\productD.js?productId=' . htmlspecialchars($product['ProductID']) . '">
                             <button class="card-btn">View</button></a>';
                                 <button class="cart-btn">Add to cart</button>
