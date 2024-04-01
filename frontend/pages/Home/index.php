@@ -14,12 +14,17 @@ ini_set('display_errors', 1);
 ?>
 </head>
 <body>
-    <main>
+    <main>   
+    <div class="main-section">
+        <div class="background">
+            <p class="sub-heading"> Fashion that Inspires Confidence </p>
+        </div>
+    </div>
         <!-- Product section -->
         <section class="product">
             <h2 class="product-category">Best selling items</h2>
             <hr id="hr">
-
+            <div class="space"></div>
             <!-- Button to bring it to the first product  -->
             <div class="pre-nxt-btn">
                 <button class="pre-btn"><img src="../../assets/images/arrow.jpg" alt="pre-button"></button>
@@ -37,9 +42,9 @@ ini_set('display_errors', 1);
                     <div class="product-image">
                     <span class="discount-tag">50% off</span> <!-- If applicable -->
                             <img src="<?php echo htmlspecialchars($product['ImageURL']); ?>" alt="Product Image" class="product-thumb"> <!-- TO-DO: Image path -->
-                            <button class="card-btn">Wishlist</button>
-                            <button class="cart-btn">Add to cart</button>
-                            echo '<a href="..\ProductDetails\productD.js?productId=' . htmlspecialchars($product['ProductID']) . '">View Product</a>';
+                            echo '<a href="..\ProductDetails\productD.js?productId=' . htmlspecialchars($product['ProductID']) . '">
+                            <button class="card-btn">View</button></a>';
+                                <button class="cart-btn">Add to cart</button>
                         </div>
                         <div class="product-info">
                             <!-- <h2 class="product-brand"><?php echo htmlspecialchars($product['Brand']); ?></h2> -->

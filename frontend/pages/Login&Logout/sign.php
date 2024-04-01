@@ -58,41 +58,39 @@ ob_end_clean(); // Clean the output buffer
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../Register/registcss.css">
-    <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/website.css">
     <title>Sign In</title>
     <?php include '../../components/Header/header.php'; ?>
 </head>
 <body>
-
 <?php if (isset($_SESSION['error'])): ?>
     <p class="error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
 <?php endif; ?>
-
-    <div class="container">
-        <div class="header">
-        </div>
-    <form action="sign.php" method="post" id="signInForm">
-        <h2>Sign In</h2>
+<div class="signForm">
+    <form action="sign.php" method="post" class="signForm">
+        <div class="container">
+        <h2 id ="head">Sign In</h2>
         <div class="input-group">
-            <label for="name">User Name:</label>
+            <label for="name">User Name</label>
             <input type="text" name="name" id="name" required>
         </div>
         <div class="input-group">
-            <label for="password">Password:</label>
+            <label for="password">Password</label>
             <input type="password" name="password" id="password" autocomplete="new-password" required>
         </div>
         <div class="input-group">
-            <button type="submit" name="sign-in">Sign in</button>
+            <button type="submit" name="sign-in" id="sign-in">Sign in</button>
         </div>
         <div class="input-group">
-            <a href="../ForgotPassword/forgotpass.php">Forgot Password?</a>
+            <a href="../ForgotPassword/forgotpass.php" id="ForgotPassword" >Forgot Password?</a>
         </div>
         <div class="have-account">
-            <p>Don't have an account? <a href="../Register/register.php">Register here</a></p>
+            <p>Don't have an account? <a href="../Register/register.php" id ="regihere">Register here</a></p>
         </div>
+        </div>
+
     </form>
     <?php include '../../components/Footer/footer.html'; ?>
+
 </body>
 </html>
