@@ -54,11 +54,31 @@ if (isset($_POST['update-price'])) {
 <head>
     <title>Inventory Management</title>
     <!-- Include necessary styles -->
-    <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/website.css">
+     <!-- Include Header Component -->
+     <?php include '../../components/Header/header.php'; ?>
+<?php  error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
 </head>
+
 <body>
-    <h1>Inventory Management</h1>
+<div class="profile-container">
+        <div class="sidebar">
+        <nav class="usernav">
+            <h2 id="h1">Profile</h2>
+                <ul>
+                    <li><a href="userprof.php" id="li">Personal Info</a></li>
+                    <?php if (isAdmin()): ?>
+                                    <li><a href="inventory.php" id="li">Manage Inventory</a></li>
+                    <?php endif; ?>                   
+                    <li><a href="../Home/index.php" id="li">Home</a></li>
+                    <li><a href="../Cart/cart.html" id="li">Cart</a></li>
+                    <li><a href="../Checkout/checkout.html"id="li">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+
     <!-- Add inventory management functionalities here -->
 
     <!-- add product  -->
@@ -102,26 +122,30 @@ if (isset($_POST['update-price'])) {
         </div> -->
 
         <!-- update product -->
-        <h2>Update Product</h2>
-        <div class="input-group">
-            <label for="product-id">Product ID:</label>
-            <input type="number" name="product-id" id="product-id" required>
+        <div id="form-container">
+            <!-- update product -->
+            <form id="update-product-form" method="POST" action="inventory.php">
+                <h2 id="form-heading">Update Product</h2>
+                <div class="input-group">
+                    <label for="product-id">Product ID:</label>
+                    <input type="number" name="product-id" id="product-id" required>
+                </div>
+                <div class="input-group">
+                    <label for="new-stock">New Stock Quantity:</label>
+                    <input type="number" name="new-stock" id="new-stock" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" name="update-stock">Update Stock</button>
+                </div>
+                <div class="input-group">
+                    <label for="new-price">New Price:</label>
+                    <input type="number" name="new-price" id="new-price" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" name="update-price">Update Price</button>
+                </div>
+            </form>
         </div>
-        <div class="input-group">
-            <label for="new-stock">New Stock Quantity:</label>
-            <input type="number" name="new-stock" id="new-stock" required>
-        </div>
-        <div class="input-group">
-            <button type="submit" name="update-stock">Update Stock</button>
-        </div>
-        <div class="input-group">
-            <label for="new-price">New Price:</label>
-            <input type="number" name="new-price" id="new-price" required>
-        </div>
-        <div class="input-group">
-            <button type="submit" name="update-price">Update Price</button>
-        </div>
-
-    </form>
+    </div>
 </body>
 </html>

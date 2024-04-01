@@ -58,43 +58,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="registcss.css">
-    <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/website.css">
     <title>Registration Form</title>
     <?php include '../../components/Header/header.php'; ?>
     <?php include '../../../database/connection.php'; ?>
 </head>
 <body>
-
+    <div id="background-2">
     <form action="register.php" method="post" id="registrationForm">
-        <h2>User Registration</h2>
+        
+        <div class="container2">
+        <h2 id="head">User Registration</h2>
         <div class="input-group">
-            <label for="name">Name:</label>
+            <label for="name">Name</label>
             <input type="text" name="name" id="name" required>
         </div>
         <div class="input-group">
-            <label for="email">Email:</label>
+            <label for="email">Email</label>
             <input type="email" name="email" id="email" required>
         </div>
         <div class="input-group">
-        <label for="password">Password:</label>
+        <label for="password">Password</label>
         <input type="password" name="password" id="password" autocomplete="new-password" required>
         </div>
         <div class="input-group">
-        <label for="confirm-password">Confirm Password:</label>
+        <label for="confirm-password">Confirm Password</label>
         <input type="password" name="confirm-password" id="confirm-password" autocomplete="new-password" required>
         </div>
-
         <div class="input-group">
-            <button type="submit" name="register">Register</button>
+            <button type="submit" name="register" id="register">Register</button>
         </div>
         <div class="have-account">
-            <p>Already have an Account ?<a href="../Login&Logout/sign.php"> Sign in</a></p>
+            <p>Already have an Account ?<a href="../Login&Logout/sign.php" id="regihere"> Sign in</a></p>
+        </div>
         </div>
 
     </form>
     <?php include '../../components/Footer/footer.html'; ?>
-
+ </div>
 </body>
 </html>

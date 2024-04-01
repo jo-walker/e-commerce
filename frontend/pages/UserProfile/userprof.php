@@ -71,63 +71,60 @@ ob_end_clean(); // Clean the output buffer
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <link rel="stylesheet" type="text/css" href="../Register/registcss.css"> 
-    <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/website.css">
+    <title>User Profile</title>
 </head>
 <?php include '../../components/Header/header.php';?>
 <body data-page="userprof">
-
-    <div class="up-profile-container">
-        <div class="up-sidebar">
-            <h2>User Profile</h2>
-            <nav>
+    <div class="profile-container">
+        <div class="sidebar">
+        <nav class="usernav">
+            <h2 id="h1">Profile</h2>
                 <ul>
-                    <li><a href="userprof.php">Personal Info</a></li>
+                    <li><a href="userprof.php" id="li">Personal Info</a></li>
                     <?php if (isAdmin()): ?>
-                                    <li><a href="inventory.php">Manage Inventory</a></li>
+                                    <li><a href="inventory.php" id="li">Manage Inventory</a></li>
                     <?php endif; ?>                   
-                    <li><a href="../Home/index.php">Home</a></li>
-                    <li><a href="../Cart/cart.html">Cart</a></li>
-                    <li><a href="../Checkout/checkout.html">Checkout</a></li>
+                    <li><a href="../Home/index.php" id="li">Home</a></li>
+                    <li><a href="../Cart/cart.html" id="li">Cart</a></li>
+                    <li><a href="../Checkout/checkout.html"id="li">Checkout</a></li>
                 </ul>
             </nav>
         </div>
-        
         <div class="up-main-content">
             <div id="up-personal-info">
-                <h3>Personal Info</h3>
+                <h3 id="h3">Personal Info</h3>
                 <?php if ($user): ?>
-                <p>Username: <span id="display-username"><?php echo htmlspecialchars($user['Username']); ?></span></p>
-                <p>Email: <span id="display-email"><?php echo htmlspecialchars($user['Email']); ?></span></p>
-                <p>Created At: <?php echo htmlspecialchars($user['CreatedAt']); ?></p>
-                <p>Last Login: <?php echo htmlspecialchars($user['LastLogin']); ?></p>
+                <p id ="data">Username : <span id="display-username"><?php echo htmlspecialchars($user['Username']); ?></span></p>
+                <p id ="data">Email : <span id="display-email"><?php echo htmlspecialchars($user['Email']); ?></span></p>
+                <p id ="data">Created At : <?php echo htmlspecialchars($user['CreatedAt']); ?></p>
+                <p id ="data">Last Login : <?php echo htmlspecialchars($user['LastLogin']); ?></p>
                 
                 <?php else: ?>
                 <p>Unable to fetch user data.</p>
                 <?php endif; ?>
 
-                <button id="edit-info-btn">Edit</button>
+                <button id="edit-info-btn" id="button-us" class="us">Edit</button>
 
             </div>
 
             <!-- Hidden form for editing user info -->
             <div id="edit-personal-info" style="display: none;">
-                <h3>Edit Personal Info</h3>
+                <h3 id="h3">Edit Personal Info</h3>
                 <div class="info-form">
                 <form id="edit-info-form" method="POST" action="userprof.php">
-                    <label for="username">Username:</label>
+                    <label for="username" id="data">Username:</label>
                     <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user['Username']); ?>" required>
-                    
-                    <label for="email">Email:</label>
+                    <label for="email" id="data" >Email:</label>
                     <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['Email']); ?>" required>
+                
                     
-                    <button type="submit" name="update-info">Update Info</button>
+                    <button type="submit" name="update-info" >Update Info</button>
 
                     <!-- change password -->
-                    <label for="password">Change Password:</label>
-                    <p><a href="../ForgotPassword/forgotpass.php">Change Password</a></p>
+                    <!-- <label for="password" id="data">Change Password:</label> -->
+                    <br>
+                    <p><a href="../ForgotPassword/forgotpass.php" id="data"> Click Here to change password !</a></p>
 
                     <!-- Delete Account Button -->
                     <!-- <form action="deleteAccount.php" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
@@ -135,37 +132,38 @@ ob_end_clean(); // Clean the output buffer
                     <button type="submit" name="delete-account">Delete Account</button>
                     </form> -->
 
-                    <button type="button" id="cancel-edit-btn">Cancel</button>
+                    <button type="button" id="cancel-edit-btn" >Cancel</button>
                 </form>
                 </div>
             </div>  
             <div id="up-order-history">
-                <h3>Order History</h3>
+                <h3 id="h3">Order History</h3>
                 <!-- dummy order data -->
                 <ul>
-                    <li>Order #1234</li>
-                    <li>Order #5678</li>
-                    <li>Order #91011</li>
+                    <li id="data">Order #1234</li>
+                    <li id="data">Order #5678</li>
+                    <li id="data">Order #91011</li>
                 </ul>
             </div>
             
             <div id="up-saved-addresses">
-                <h3>Saved Addresses</h3>
+                <h3 id ="h3">Saved Addresses</h3>
                 <!-- dummy address data -->
                 <ul>
-                    <li>123 Main St, City, Country</li>
-                    <li>456 Another St, City, Country</li>
+                    <li id="data">123 Main St, City, Country</li>
+                    <li id="data">456 Another St, City, Country</li>
                 </ul>
             </div>
             
             <div id="up-payment-methods">
-                <h3>Payment Methods</h3>
+                <h3 id="h3">Payment Methods</h3>
                 <!-- dummy payment data -->
-                <p>Visa ending in 1234</p>
-                <p>Mastercard ending in 5678</p>
+                <p id="data">Visa ending in 1234</p>
+                <p id="data">Mastercard ending in 5678</p>
             </div>            
         </div>
     </div>
+
     <script>
         // JavaScript for toggling the edit form
         document.getElementById('edit-info-btn').addEventListener('click', function() {

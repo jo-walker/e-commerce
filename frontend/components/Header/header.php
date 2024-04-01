@@ -18,7 +18,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <div class="nav-items">
                 <form action="..\../pages\SearchResult\searchResult.php" method="get" class="search"> <!-- Make sure to include the form tags for search -->
                     <input type="text" class="search-box" placeholder="What are you looking for today?" name="searchTerm">
-                    <button type="submit" class="search-btn">search</button>
+                    <button type="submit" class="search-btn" id="search-btn">search</button>
                 </form>
                 <!-- Buttons -->
             </div>

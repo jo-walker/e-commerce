@@ -5,7 +5,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'roboto', sans-serif;
 }
 
 .navbar {
@@ -40,20 +39,14 @@
 }
 
 .search {
-
     width: 500px;
     display: flex;
-
-
 }
 
 .search-box {
-
     width: 50%;
     height: 30px;
     padding: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     background: #ffffff;
     text-transform: capitalize;
     background: none;
@@ -61,11 +54,11 @@
     outline: none;
     border: none;
     border: 1px solid #ffffff;
-    margin-left: 50px;
+    margin-left: 40%;
 }
 
-.search-btn {
-    width: 20%;
+#search-btn.search-btn {
+    width: 22%;
     height: 30px;
     padding: 5px 10px;
     border: #ffffff;
@@ -75,8 +68,7 @@
     color: #000000;
     text-transform: capitalize;
     font-size: 15px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 0px;
 }
 
 .search-box::placeholder {
@@ -224,7 +216,7 @@
 .Register-button {
     font-family: "Lato", sans-serif;
     width: 10%;
-    margin-top: 4%;
+    margin-top: 3.5%;
     height: 9%;
     background: #ffffff;
     border-radius: 10px;
@@ -233,7 +225,6 @@
     display: inline-block;
     padding: 7px 20px;
     text-align: center;
-    text-decoration: none;
     transition: all 250ms;
     border: 0;
     font-size: 15px;
@@ -244,12 +235,12 @@
 
 .Sign-up-button:hover,
 .Register-button:hover {
-    box-shadow: rgb(239, 239, 239);
     transform: scale(1.05) rotate(-1deg);
+    text-decoration: none;
 }
 
 .Sign-up-button {
-    margin-left: 4rem;
+    margin-left: 10rem;
     margin-right: 1rem;
 }
 
@@ -269,7 +260,7 @@
 
 #links-container a {
     margin-left: 12%;
-
+    text-decoration: none;
 
 }
 
@@ -299,12 +290,13 @@
 .link:hover {
     color: rgb(0, 0, 0);
     opacity: 10;
+    text-decoration: none;
 }
 
 .main-section {
     width: 100%;
     height: calc(100vh - 150px);
-    background-image: url('Images/background.jpg');
+    background-image: url('frontend/assets/images/background.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -370,11 +362,13 @@
     flex: 0 0 auto;
     box-shadow: 0px 0px 10px rgba(213, 210, 210, 0.5);
     width: 260px;
-    height: 400px;
+    height: 300px;
     margin-right: 40px;
     border-radius: 15px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    
 }
-
 .product-card:hover {
     cursor: pointer;
     box-shadow: 0px 0px 10px rgb(231, 211, 211), 0px 0px 10px rgb(237, 56, 56), 0px 0px 10px rgb(245, 174, 20);
@@ -403,14 +397,14 @@
     color: #eb0f0f;
     background-color: #ffffff;
     right: 10px;
-    top: 5px;
+    top: 5%;
     text-transform: capitalize;
 }
 
 .card-btn ,.cart-btn {
     position: absolute;
     font-family: "Lato", sans-serif;
-    bottom: 10px;
+    bottom: 20px;
     transform: translateX(-50%);
     outline: 1.5px solid black;
     padding: 10px;
@@ -578,7 +572,7 @@ footer {
 .footer-title,
 .info {
     font-family: "Lato", sans-serif;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.804);
     margin: 20px 0;
     text-transform: capitalize;
     line-height: 1.5;
@@ -617,7 +611,8 @@ footer {
     left: 0;
     bottom: 0;
     text-align: center;
-    color: #ffffffc7;
+    font-size: 14px;
+    color: #ffffffde;
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -628,6 +623,11 @@ footer {
     margin-bottom: 10px;
     font-size: 14px;
 }
+.main-line{
+    color: rgb(175, 101, 101);
+    font-weight: 600;
+}
+
 .instagram {
     box-sizing: border-box;
     display: block;
@@ -638,7 +638,8 @@ footer {
     margin-bottom:10px ;
     width: 20px;
     color: #000000;
-    height: 20px
+    height: 20px;
+    margin-bottom: 2%;
     
 }
 .instagram::after,
@@ -819,3 +820,399 @@ background-color: #beb6b697;
     background-color: #494343;
 
   }
+
+ /* Sign-up form */
+   body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* sign-up container  */
+ .container{
+    height: 400px;
+    width:400px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+ }
+ 
+ /* Register container */
+ .container2{
+    font-family: "Lato", sans-serif;
+    height: 500px;
+    width:400px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    color: #000000;
+    border-radius: 20px;
+ }
+ #head{
+    margin-bottom: 7%;
+    text-align: center;
+}
+#regihere{
+    color: rgb(255, 52, 52);
+}
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    text-align: left;
+    margin: 3px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-group input[type="radio"] {
+    margin-top: 5px;
+}
+
+
+
+/*--------USER PROFILE-----------*/
+
+.profile-container {
+    display: flex;
+    min-height: 100vh;
+}
+.container-us{
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+}
+#profile-info{
+
+}
+#h1,#li{
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    border-color: #000000;
+    font-family: "Lato", sans-serif;
+    padding: 7px;
+}
+#h1{
+    font-size: 25px;
+    font-family: "Dancing Script", cursive;
+    background-color:rgb(175, 101, 101) ;
+    border:2px #000000;
+    font-weight: 700;
+}
+ul {
+    list-style-type: none;
+}
+#h3{
+    font-size: 25px;
+    font-family: "Dancing Script", cursive;
+    background-color:rgb(175, 101, 101) ;
+    border:2px #000000;
+    padding: 7px;
+    color: #000000;
+    margin-bottom: 5%;
+    
+}
+#data{
+ padding-bottom:10px;
+ margin-top: 10px;
+ font-size:16px;
+ font-weight: 500;
+}
+
+.sidebar {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    width: 250px;
+}
+.usernav{
+    padding: 15px;
+}
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar nav ul {
+    padding: 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: 0;
+    display: block;
+    margin: 10px 0;
+}
+
+.up-main-content {
+    flex-grow: 1;
+    background-color: white;
+    padding: 25px;
+}
+.up-personal-info{
+    display: flex;
+
+}
+
+.up-main-content h3 {
+    color: #333;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+#button-us {
+    font-family: "Lato", sans-serif;
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+
+}
+.us{
+    margin-top: 10px;
+    margin-bottom: 5%;
+}
+a {
+    color: #000000;
+    text-decoration: none;
+
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* Apply styles to labels */
+#edit-info-form label {
+    display: block; 
+    margin-bottom: 5px; /* Add some space below each label */
+    font-weight: bold; /* Make labels bold for emphasis */
+}
+
+/* Apply styles to input fields */
+#edit-info-form input[type="text"],
+#edit-info-form input[type="email"] {
+    font-family: "Lato", sans-serif;
+    width: calc(100% - 20px); /* Take up 100% width of parent minus padding */
+    padding: 10px; /* Add padding to input fields */
+    margin-bottom: 10px; /* Add some space below each input field */
+    border: 1px solid #ddd; /* Add a border with a light gray color */
+    border-radius: 4px; /* Add border radius for rounded corners */
+}
+
+/* Apply styles to submit button */
+#edit-info-form button[type="submit"] {
+    font-family: "Lato", sans-serif;
+    background-color: #000000; /* Set button background color */
+    color: white; /* Set text color to white */
+    padding: 10px 20px; /* Add padding to button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-top: 5px;
+}
+
+/* Change button color on hover */
+#edit-info-form button[type="submit"]:hover {
+    background-color:rgb(175, 101, 101) /* Darken button background color on hover */
+}
+/* Apply styles to "Change Password" link */
+#edit-info-form a#data {
+    font-family: "Lato", sans-serif;
+    text-decoration: none; /* Remove underline from the link */
+    color: #eb211d; /* Set link color to blue */
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold; /* Make the link text bold */
+    margin-bottom: 10px; /* Add some space below the link */
+    display: inline-block; /* Ensure link appears inline */
+    text-decoration: underline;
+}
+
+/* Apply styles to "Cancel" button */
+#cancel-edit-btn {
+    font-family: "Lato", sans-serif;
+    background-color: #000000; /* Set button background color */
+    color: white; /* Set text color to white */
+    padding: 10px 20px; /* Add padding to button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-bottom: 10px;
+}
+
+/* Change button color on hover */
+#cancel-edit-btn:hover {
+    background-color:rgb(175, 101, 101) /* Darken button background color on hover */
+}
+/* Apply styles to "Edit" button */
+#edit-info-btn {
+    font-family: "Lato", sans-serif;
+    background-color: #000000; /* Set button background color */
+    color: white; /* Set text color to white */
+    padding: 10px 20px; /* Add padding to button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Change button color on hover */
+#edit-info-btn:hover {
+    background-color: rgb(175, 101, 101) ;
+}
+/* Profile container styles */
+#profile-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the content horizontally */
+}
+
+/* Sidebar styles */
+#sidebar {
+    width: 200px; /* Set sidebar width */
+    padding: 20px; /* Add padding */
+    background-color: #f4f4f4; /* Set background color */
+}
+
+/* Usernav styles */
+#usernav {
+    margin-bottom: 20px; /* Add some space below nav */
+}
+
+/* Heading styles */
+#h1 {
+    font-size: 25px; /* Set font size */
+    font-family: "Dancing Script", cursive; /* Set font family */
+    background-color: #af6565; /* Set background color */
+    color: white; /* Set text color */
+    padding: 10px; /* Add padding */
+    text-align: center; /* Center align text */
+    margin-bottom: 20px; /* Add some space below heading */
+}
+
+/* List item styles */
+#li {
+    display: block; /* Ensure list items appear on their own line */
+    padding: 10px; /* Add padding */
+    text-align: center; /* Center align text */
+    margin-bottom: 10px; /* Add some space below list items */
+    background-color: #f9f9f9; /* Set background color */
+    border-radius: 4px; /* Add border radius for rounded corners */
+}
+
+/* Heading for inventory management */
+#inventory-heading {
+    font-size: 30px; /* Set font size */
+    text-align: center; /* Center align text */
+    margin-bottom: 20px; /* Add some space below heading */
+}
+
+/* Form container styles */
+#form-container {
+    margin-left: 15%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    height: 500px;
+    width: 400px; /* Set form container width */
+    padding: 50px; /* Add padding */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+}
+
+/* Form heading styles */
+#form-heading {
+    font-family: "Lato", sans-serif;
+    font-size: 23px; /* Set font size */
+    text-align: center; /* Center align text */
+    margin-bottom: 20px; /* Add some space below heading */
+}
+
+/* Input field styles */
+#form-container input[type="number"] {
+    font-family: "Lato", sans-serif;
+    width: calc(100% - 10px); /* Take up 100% width of parent minus padding */
+    padding: 10px; /* Add padding */
+    margin-bottom: 10px; /* Add some space below each input field */
+    border: 1px solid #ddd; /* Add a border with a light gray color */
+    border-radius: 4px; /* Add border radius for rounded corners */
+}
+
+/* Button styles */
+#form-container button[type="submit"] {
+    font-family: "Lato", sans-serif;
+    background-color: #000000; /* Set button background color */
+    color: white; /* Set text color to white */
+    padding: 10px 20px; /* Add padding to button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+/* Change button color on hover */
+#form-container button[type="submit"]:hover {
+    background-color:  #af6565; /* Darken button background color on hover */
+}
+
+
+/* product search results */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    margin: 1rem 0;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.product-details {
+    padding: 1rem;
+    flex: 1;
+}
+.product-card-link {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Inherits text color from parent elements */
+}
+
+.product-card:hover {
+    /* Example hover effect to indicate interactivity */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+}
+.product-image img {
+    width: 100%; /* Make sure image covers the full width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+}
