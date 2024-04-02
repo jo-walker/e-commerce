@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/website.css">
-    <script src="../index.js"></script>
+    <script src="../../../backend/index.js"></script>
     <title>Lanewood Clothing</title>
     <!-- Include Header Component -->
     <?php include '../../components/Header/header.php'; ?>

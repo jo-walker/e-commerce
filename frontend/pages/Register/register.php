@@ -59,31 +59,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/website.css">
+    <script src="../../../backend/registerValidation.js" type="text/javascript" defer></script>
     <title>Registration Form</title>
     <?php include '../../components/Header/header.php'; ?>
     <?php include '../../../database/connection.php'; ?>
 </head>
 <body>
     <div id="background-2">
-    <form action="register.php" method="post" id="registrationForm">
+    <form action="register.php" method="post" id="registrationForm" >
         
         <div class="container2">
         <h2 id="head">User Registration</h2>
         <div class="input-group">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name" >
         </div>
         <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
+            <input type="text" name="email" id="email" >
         </div>
         <div class="input-group">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" autocomplete="new-password" required>
+        <input type="password" name="password" id="password" autocomplete="new-password" >
         </div>
         <div class="input-group">
         <label for="confirm-password">Confirm Password</label>
-        <input type="password" name="confirm-password" id="confirm-password" autocomplete="new-password" required>
+        <input type="password" name="confirm-password" id="confirm-password" autocomplete="new-password" >
         </div>
         <div class="input-group">
             <button type="submit" name="register" id="button-us">Register</button>

@@ -59,6 +59,7 @@ ob_end_clean(); // Clean the output buffer
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/website.css">
+    <script src="../../../backend/signinValidation.js" type="text/javascript" defer></script>
     <title>Sign In</title>
     <?php include '../../components/Header/header.php'; ?>
 </head>
@@ -72,11 +73,11 @@ ob_end_clean(); // Clean the output buffer
         <h2 id ="head">Sign In</h2>
         <div class="input-group">
             <label for="name">User Name</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name" >
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" autocomplete="new-password" required>
+            <input type="password" name="password" id="password" >
         </div>
         <div class="input-group">
             <button type="submit" name="sign-in" id="button-us">Sign in</button>
