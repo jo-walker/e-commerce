@@ -3,6 +3,11 @@ ob_start(); // Start output buffering
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+}// Check if the user is not signed in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // User is not signed in, redirect to sign-in page
+    header('Location: ../../pages/Login&Logout/sign.php');
+    exit(); // Stop further script execution
 }
 
 require '..\..\..\database\connection.php'; // database config file

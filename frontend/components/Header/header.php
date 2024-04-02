@@ -16,7 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <a href="wishlist.html" class="heart" alt="heart-Image"></a>
             <!-- Search Option -->
             <div class="nav-items">
-                <form action="..\../pages\SearchResult\searchResult.php" method="get" class="search"> <!-- Make sure to include the form tags for search -->
+                <form action="..\../pages\SearchResult\searchResult.php" method="get" class="search"> <!--to include the form tags for search -->
                     <input type="text" class="search-box" placeholder="What are you looking for today?" name="searchTerm">
                     <button type="submit" class="search-btn" id="search-btn">search</button>
                 </form>
@@ -38,9 +38,8 @@ if (session_status() == PHP_SESSION_NONE) {
             <li class="link-item">
                 <a href="../../pages/Home/index.php" class="link">Home</a>
             </li>
-            <li class="link-item"><a href="#" class="link">Featured</a></li>
-            <li class="link-item"><a href="#" class="link">Sweaters</a></li>
-            <li class="link-item"><a href="#" class="link">Clothing</a></li>
+            <li class="link-item"><a href="../../pages/Home/index.php?view=categories" class="link">All Categories</a></li>
+            <li class="link-item"><a href="../../pages/Home/index.php?view=products" class="link">All Products</a></li>
             <li class="link-item"><a href="#footer" class="link">About Us</a></li>
         </ul>
     </nav>

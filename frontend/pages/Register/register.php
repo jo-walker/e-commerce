@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" name="confirm-password" id="confirm-password" autocomplete="new-password" required>
         </div>
         <div class="input-group">
-            <button type="submit" name="register" id="register">Register</button>
+            <button type="submit" name="register" id="button-us">Register</button>
         </div>
         <div class="have-account">
             <p>Already have an Account ?<a href="../Login&Logout/sign.php" id="regihere"> Sign in</a></p>

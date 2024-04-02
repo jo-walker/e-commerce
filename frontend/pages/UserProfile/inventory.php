@@ -33,7 +33,9 @@ $products = getProducts(); // to fetch all products
 </head>
 <body>
     <?php include '../../components/Header/header.php'; ?>
-
+    <div>
+    <a href="userprof.php" class="back-button">Back to Profile</a>
+</div>
     <h1 class="manage">Inventory Management</h1>
 
     <div>

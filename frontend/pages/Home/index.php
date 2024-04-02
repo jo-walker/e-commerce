@@ -34,8 +34,9 @@ ini_set('display_errors', 1);
             <!-- product cards -->
             <div class="product-container">
             <?php
-                include '../../../database/queries.php'; // Make sure path is correct.
-                $products = getProducts(); // Fetch all products.
+            require '..\..\..\database\connection.php'; // database config file
+            require '..\..\..\database\queries.php'; // database queries file
+            $products = getProducts();
                 foreach ($products as $product): ?>
                 <div class="product-card">
                     <div class="product-image">
@@ -52,13 +53,7 @@ ini_set('display_errors', 1);
                     </div>
                 <?php endforeach; ?>
             </div>
-            </section>
-                <!-- Product cards using product-card.html-->
-                <div class="product-container">
-                    <!-- Include Product Card -->
-                    <include src="../../components/Product/product-card.html"></include>
-                </div>
-            </section>
+
     </main>
 
     <!-- Include Footer Component -->
