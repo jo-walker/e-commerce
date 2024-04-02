@@ -33,6 +33,30 @@ $color = isset($_GET['color']) ? $_GET['color'] : '';
 // Now, use these variables to fetch filtered products
 $products = searchProductsFiltered($searchTerm, $category, $minPrice, $maxPrice, $color);
  ?>
+<form id="filterForm" method="GET" action="searchResult.php">
+    <!-- Keep the search term input hidden to maintain search context -->
+    <input type="hidden" name="searchTerm" value="<?php echo htmlspecialchars($searchTerm); ?>">
+    <!-- Category filter -->
+    <select name="category">
+        <option value="">Select Category</option>
+        <?php foreach ($categoryOptions as $option) : ?>
+            <option value="<?php echo $option; ?>">
+                <?php echo $option; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <!-- Price range filter -->
+    <input type="number" name="minPrice" placeholder="Min Price">
+    <input type="number" name="maxPrice" placeholder="Max Price">
+    <!-- Color filter -->
+    <select name="color">
+        <option value="">Select Color</option>
+        <?php foreach ($colorOptions as $option) : ?>
+            <option value="<?php echo $option; ?>"><?php echo $option; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit">Filter</button>
+</form>
 
 <!-- Product Display Section -->
 <div class="product-display">
@@ -62,30 +86,6 @@ $products = searchProductsFiltered($searchTerm, $category, $minPrice, $maxPrice,
     // }
     ?>
 </div>
-<form id="filterForm" method="GET" action="searchResult.php">
-    <!-- Keep the search term input hidden to maintain search context -->
-    <input type="hidden" name="searchTerm" value="<?php echo htmlspecialchars($searchTerm); ?>">
-    <!-- Category filter -->
-    <select name="category">
-        <option value="">Select Category</option>
-        <?php foreach ($categoryOptions as $option) : ?>
-            <option value="<?php echo $option; ?>">
-                <?php echo $option; ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-    <!-- Price range filter -->
-    <input type="number" name="minPrice" placeholder="Min Price">
-    <input type="number" name="maxPrice" placeholder="Max Price">
-    <!-- Color filter -->
-    <select name="color">
-        <option value="">Select Color</option>
-        <?php foreach ($colorOptions as $option) : ?>
-            <option value="<?php echo $option; ?>"><?php echo $option; ?></option>
-        <?php endforeach; ?>
-    </select>
-    <button type="submit">Filter</button>
-</form>
 <!-- Pagination -->
 <div class="pagination">
     <!-- Insert your pagination links here -->

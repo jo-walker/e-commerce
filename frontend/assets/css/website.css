@@ -1457,3 +1457,191 @@ a:hover {
 #productDescriptionLabel{
     margin-top: 15px;
 }
+
+/* searchresult-filter */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the space between products */
+    justify-content: center;
+    padding: 20px;
+}
+
+.product-item {
+    background-color: #af6565;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(33.333% - 20px); /* Three items per row, adjust the subtraction value based on the gap */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-details {
+    text-align: center;
+}
+
+.product-price {
+    color: #fff;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-category, .product-color {
+    color: #000;
+    font-size: 0.9em;
+}
+
+.view-details {
+    display: inline-block;
+    background-color: #3e0c0c;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.view-details:hover {
+    background-color: #3e0c0c;
+}#filterForm {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #494343;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 80%; /* Adjust based on preference */
+    display: flex;
+    justify-content: space-around; /* Or 'space-between' depending on your layout preference */
+    flex-wrap: wrap; /* Ensure form elements wrap on smaller screens */
+}
+
+#filterForm select, #filterForm input[type=number] {
+    padding: 10px;
+    width: 20%; /* Adjust based on preference */
+    margin-bottom: 10px; /* Adds spacing on wrap */
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#filterForm button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000000;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#filterForm button:hover {
+    background-color: #af6565
+}
+@media (max-width: 768px) {
+    .product-item {
+        width: calc(50% - 20px); /* Two items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-item {
+        width: calc(100% - 20px); /* One item per row on very small screens */
+    }
+
+    #filterForm select, #filterForm input[type=number], #filterForm button {
+        width: 100%;
+    }
+}
+/* admin inventory management table page */
+.manage {
+    text-align: center;
+    margin: 20px;
+}
+
+.add-product-btn {
+    background-color: #000000;
+    color: white;
+    padding: 10px 24px;
+    margin: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+    float: right;
+    margin-right: 40px;
+}
+
+.add-product-btn:hover {
+    background-color: #af6565;
+}
+
+.container-inventory {
+    margin: auto;
+    width: 95%;
+    overflow-x: auto;
+}
+
+/* Table Styling */
+.inventory {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.inventory th, .inventory td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+
+}
+
+.inventory th {
+    background-color: #af6565;
+    color: white;
+    
+}
+
+.inventory tr:nth-child(even) {
+    background-color: #f2f2f2;
+    
+}
+
+.inventory td img {
+    width: 100px; /* Adjust based on your needs */
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Action Button Styles */
+.edit-b, .dlt-b {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.edit-b {
+    background-color: #FFA500; /* Orange */
+}
+
+.dlt-b {
+    background-color: #f44336; /* Red */
+}
+
+.edit-b:hover, .dlt-b:hover {
+    opacity: 0.8;
+}
