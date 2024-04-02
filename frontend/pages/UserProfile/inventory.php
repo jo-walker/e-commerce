@@ -131,7 +131,7 @@ $products = getProducts(); // to fetch all products
     <title>Inventory Management</title>
     <!-- Include necessary styles -->
     <link rel="stylesheet" href="../../assets/css/website.css">
-    <script src="inventory.js"></script>
+    <script src="../../../backend/inventory.js"></script>
 </head>
 <body>
     <?php include '../../components/Header/header.php'; ?>

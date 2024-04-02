@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "admin_a2";
-$password = "CST8285_A2.";
+$username = "root";
+$password = "";
 $dbname = "e-commerce";
 
 // Create database connection
