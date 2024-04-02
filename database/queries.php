@@ -104,6 +104,90 @@ function getCategories() {
     $result = $conn->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);
 }
+function getCategoriesFilter() {
+    global $conn;
+    // Adjusted SQL to join with the categories table and fetch distinct category names
+    $sql = "SELECT DISTINCT c.CategoryName 
+            FROM products p
+            JOIN categories c ON p.categoryID = c.CategoryID 
+            ORDER BY c.CategoryName";
+    
+    $result = $conn->query($sql);
+    if ($result === false) {
+        // Adding error handling to provide more insight in case of a query failure
+        die("Error executing query: " . $conn->error);
+    }
+    
+    $categories = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $categories[] = $row['CategoryName']; // Fetching the category name
+    }
+    return $categories;
+}
+
+//get all colors
+function getColorOptions() {
+    global $conn;
+    $sql = "SELECT DISTINCT color FROM products ORDER BY color";
+    $result = $conn->query($sql);
+    $colors = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $colors[] = $row['color'];
+    }
+    return $colors;
+}
+// search products with filters (category, price range, color)
+function searchProductsFiltered($searchTerm, $category = '', $minPrice = '', $maxPrice = '', $color = '') {
+    global $conn;
+    
+    // Start the SQL query
+    $sql = "SELECT * FROM products WHERE Name LIKE ?";
+
+    // Initialize an array to hold parameters for the prepared statement
+    $params = ["%$searchTerm%"];
+    $types = "s"; // Types of the parameters: s = string
+
+    // Add conditions based on the filters
+    if (!empty($category)) {
+        $sql .= " AND categoryID = ?";
+        $params[] = $category;
+        $types .= "s"; // Assuming categoryID is a string; change if it's an integer
+    }
+    if (!empty($minPrice)) {
+        $sql .= " AND Price >= ?";
+        $params[] = $minPrice;
+        $types .= "d"; // d = double (floating point numbers)
+    }
+    if (!empty($maxPrice)) {
+        $sql .= " AND Price <= ?";
+        $params[] = $maxPrice;
+        $types .= "d";
+    }
+    if (!empty($color)) {
+        $sql .= " AND color = ?";
+        $params[] = $color;
+        $types .= "s";
+    }
+
+    // Prepare the statement
+    $stmt = $conn->prepare($sql);
+    
+    // Dynamically bind parameters
+    $stmt->bind_param($types, ...$params);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $products = [];
+    while ($row = $result->fetch_assoc()) {
+        $products[] = $row;
+    }
+    
+    $stmt->close();
+
+    return $products;
+}
+
 // add a new user
 function addUser($name, $password, $email, $role) {
     global $conn;
@@ -172,7 +256,7 @@ function addProduct($name, $description, $price, $stockQuantity, $categoryID, $i
 }
 
 // update an existing product
-function updateProduct($ProductID, $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageUR, $Color) {
+function updateProduct($ProductID, $Name, $Description, $Price, $StockQuantity, $CategoryID, $ImageURL, $Color) {
     global $conn;
     $sql = "UPDATE Products SET Name = ?, Description = ?, Price = ?, StockQuantity = ?, CategoryID = ?, ImageURL = ? , Color = ? WHERE ProductID = ?";
     $stmt = $conn->prepare($sql);

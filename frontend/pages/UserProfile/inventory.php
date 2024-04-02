@@ -22,108 +22,6 @@ requireAdmin(); // Redirect non-admins to homepage or login page (utilities.php)
 $products = join_product_table(); // to fetch all products as a table join with categories
 $categories = getCategories(); // to fetch all categories
 $products = getProducts(); // to fetch all products
-
-// // Check for AJAX request to fetch product details
-// if (isset($_GET['action']) && $_GET['action'] == 'fetchDetails' && isset($_GET['productId'])) {
-//     header('Content-Type: application/json');
-//     $productId = intval($_GET['productId']);
-//     $productDetails = getProductById($productId);
-//     if ($productDetails) {
-//         // Optionally, include categories in the response if needed for a dropdown, etc.
-//         $productDetails['categories'] = getCategories();
-//         echo json_encode(['success' => true, 'product' => $productDetails]);
-//     } else {
-//         echo json_encode(['success' => false, 'error' => 'Product not found']);
-//     }
-//     exit; // Important to prevent the rest of the script from executing on an AJAX call
-// }
-
-
-// update stock
-// if (isset($_POST['update-stock'])) {
-//     // Gather and sanitize form data
-//     $productID = filter_input(INPUT_POST, 'product-id', FILTER_SANITIZE_NUMBER_INT);
-//     $newStock = filter_input(INPUT_POST, 'new-stock', FILTER_SANITIZE_NUMBER_INT);
-
-//     // Call the function to update stock
-//     try {
-//         $result = updateStock($productID, $newStock);
-//         if (!$result) {
-//             throw new Exception("Failed to update stock. Please check your input and try again.");
-//         }
-//         echo "Stock updated successfully.";
-//     } catch (Exception $e) {
-//         echo "Error updating product: " . htmlspecialchars($e->getMessage());
-//     }
-// }
-// // update price
-// if(isset($_GET['productId'])) {
-//     $productId = $_GET['productId'];
-//     // Sanitize your input
-//     $productId = filter_var($productId, FILTER_SANITIZE_NUMBER_INT);
-
-//     // Prepare your query
-//     $query = "SELECT * FROM Products WHERE ProductID = ?";
-//     $stmt = $conn->prepare($query);
-//     $stmt->bind_param('i', $productId);
-//     $stmt->execute();
-//     $result = $stmt->get_result();
-
-//     $product = $result->fetch_assoc();
-
-//     if($product) {
-//         // Assume you also get categories to allow category selection
-//         $categoriesQuery = "SELECT CategoryID, CategoryName FROM Categories";
-//         $categoriesResult = $conn->query($categoriesQuery);
-//         $categories = $categoriesResult->fetch_all(MYSQLI_ASSOC);
-
-//         // Include category details in the response
-//         $product['categories'] = $categories;
-
-//         // Make sure to set header as JSON
-//         header('Content-Type: application/json');
-//         echo json_encode($product);
-//     } else {
-//         echo json_encode(['error' => 'Product not found']);
-//     }
-// } else {
-//     echo json_encode(['error' => 'No product ID provided']);
-// }
-// if (isset($_POST['update-price'])) {
-//     // Gather and sanitize form data
-//     $productID = filter_input(INPUT_POST, 'product-id', FILTER_SANITIZE_NUMBER_INT);
-//     $newPrice = filter_input(INPUT_POST, 'new-price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-
-//     // Call the function to update price
-//     try {
-//         $result = updatePrice($productID, $newPrice);
-//         if (!$result) {
-//             throw new Exception("Failed to update price. Please check your input and try again.");
-   
-//         }
-//         echo "Price updated successfully.";
-//     } catch (Exception $e) {
-//         echo "Error updating product: " . htmlspecialchars($e->getMessage());
-//     }
-// }
-
-// delete product
-// if (isset($_POST['delete_selected_products'])) {
-//     $selectedProductIDs = $_POST['delete_product_ids'] ?? [];
-//     if (!empty($selectedProductIDs)) {
-//         $query = "DELETE FROM Products WHERE ProductID = ?";
-//         $stmt = $conn->prepare($query);
-//         foreach ($selectedProductIDs as $productID) {
-//             $stmt->bind_param('i', $productID);
-//             $stmt->execute();
-//         }
-//         // Optionally, add a success message or redirect
-//         echo "Selected products deleted successfully.";
-//         // header('Location: inventory.php');
-//     } else {
-//         echo "No products selected for deletion.";
-//     }
-// }
 ?>
 
 <html>
@@ -146,13 +44,14 @@ $products = getProducts(); // to fetch all products
     <table class="inventory">
         <thead>
             <tr>
-                <th id="tr">Photo</th>
-                <th id="tr">Title</th>
-                <th id="tr">Category</th>
-                <th id="tr">In-Stock</th>
-                <th id="tr">Price</th>
-                <th id="tr">Color</th>
-                <th id="tr">Actions</th>
+                <th id="tr" class="photo-i">Photo</th>
+                <th id="tr" class="title-i">Title</th>
+                <th id="tr" class="description-i">Description</th>
+                <th id="tr" class="cat-i">Category</th>
+                <th id="tr" class="stock-i">In-Stock</th>
+                <th id="tr" class="price-i">Price</th>
+                <th id="tr" class="color-i">Color</th>
+                <th id="tr" class="actions-i">Actions</th>
             </tr>
         </thead>
         <tbody>
