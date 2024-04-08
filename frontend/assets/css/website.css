@@ -919,6 +919,7 @@ margin-bottom: 10px;
     color: white;
     padding: 20px;
     width: 250px;
+    margin-top: 5%;
 }
 .usernav{
     padding: 15px;
@@ -942,6 +943,7 @@ margin-bottom: 10px;
     flex-grow: 1;
     background-color: white;
     padding: 25px;
+    margin-top: 5%;
 }
 .up-personal-info{
     display: flex;
@@ -950,6 +952,7 @@ margin-bottom: 10px;
 
 .up-main-content h3 {
     color: #333;
+   
 }
 
 .profile-picture {
@@ -1065,6 +1068,7 @@ a:hover {
 }
 /* Profile container styles */
 #profile-container {
+    margin-top: 15%;
     display: flex; /* Use flexbox for layout */
     justify-content: center; /* Center the content horizontally */
 }
@@ -1327,19 +1331,33 @@ a:hover {
 /* Add product in inventory  */
 /* Styles for form container */
 #productForm {
-    
     font-family: "Lato", sans-serif;
     width: 400px;
-    height: 550px;
+    height: 600px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 5px;
+    background-color: #ccccccd0;
     margin-left: 14%;
-    margin-top: 15px;
+    margin-top: 6%;
     margin-bottom: 15px;
 }
-
-
+.productForm {
+    font-family: "Lato", sans-serif;
+    width: 400px;
+    height: 700px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #ccccccd0;
+    margin-left: 14%;
+    margin-top: 6%;
+    margin-bottom: 15px;
+}
+.edit-pimg{
+    width :50px;
+    height:50px;
+}
 /* Styles for form labels */
 #productNameLabel,
 #productDescriptionLabel,
@@ -1386,6 +1404,8 @@ a:hover {
 
 /* Styles for file input */
 #productImage {
+    background-color: #00000096;
+    color: white;
     margin-top: 5px;
 }
 
@@ -1449,12 +1469,11 @@ a:hover {
 
 /* Container for the form */
 .container-pro {
-    
     max-width: 500px; 
-    height: 300px;
+    height: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 5px;
     background-color: #f9f9f9;
 }

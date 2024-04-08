@@ -78,7 +78,7 @@ ini_set('display_errors', 1);
             </nav>
         </div>
 <?php if (!empty($feedbackMessage)) echo "<p>$feedbackMessage</p>"; ?>
-<form id="productForm" method="post" action="editProd.php?ProductID=<?php echo $productID; ?>" enctype="multipart/form-data">
+<form class="productForm" method="post" action="editProd.php?ProductID=<?php echo $productID; ?>" enctype="multipart/form-data">
     <!-- Form fields -->
     <label for="productName"  id="productNameLabel">Product Name:</label>
     <input type="text" name="productName"  id="productName" value="<?php echo htmlspecialchars($product['Name']); ?>" >
@@ -92,10 +92,10 @@ ini_set('display_errors', 1);
     <label for="productStock" id="productDescriptionLabel">Stock:</label>
     <input type="number" name="productStock" id="productStock" value="<?php echo htmlspecialchars($product['StockQuantity']); ?>" >
 
-    <label for="ImageURL" id="productDescriptionLabel">Product Image:</label>
-    <input type="file" id="ImageURL"  name="ImageURL" accept="image/*">
+    <label for="ImageURL" id="productDescriptionLabel" >Product Image:</label>
+    <input type="file" id="ImageURL"  name="ImageURL" accept="image/*" >
     <?php if (!empty($product['ImageURL'])): ?>
-        <img src="<?php echo $product['ImageURL']; ?>" alt="Product Image" style="max-width: 200px;">
+        <img src="<?php echo $product['ImageURL']; ?>" alt="Product Image"class="edit-pimg">
     <?php endif; ?>
 
     <label for="productCategory" id="productDescriptionLabel">Category:</label>
