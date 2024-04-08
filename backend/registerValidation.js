@@ -1,66 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
     const signForm = document.querySelector('#registrationForm');
-    
-    const submitHandler = (event) => {
-        event.preventDefault(); // Prevent the form from submittin.
 
-        // Clear error messages
+    signForm.addEventListener('submit', (event) => {
+        event.preventDefault();
         resetErrorMessages();
 
-        let formValid = true;
-        let allFieldsFilled = true;
-
-        // Check all inputs fields for a data.
-        const inputs = signForm.querySelectorAll('input[type="text"], input[type="password"], input[type="email"]');
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                allFieldsFilled = false;
-                showError(input, 'This field is required.');
-            }
-        });
-
-        if (!allFieldsFilled) {
-            formValid = false;
-            alert('All fields are required :) '); 
+        if (!validateForm()) {
+            console.log('Form is invalid.');
+        } else {
+            console.log('Form is valid. Form would be submitted here.');
+            signForm.submit();
         }
+    });
 
-        
-        if (allFieldsFilled) {
+    function validateForm() {
+        let isValid = true;
 
-            const nameInput = document.getElementById('name');
-            if (nameInput.value.trim().length < 5 || nameInput.value.trim().length > 30) {
-                showError(nameInput, 'Name must be between 5 and 30 characters.');
-                formValid = false;
-            }
+        isValid &= validateName();
+        isValid &= validateEmail();
+        isValid &= validatePassword();
+        isValid &= validateConfirmPassword();
 
-            const emailInput = document.getElementById('email');
-            if (!emailIsValid(emailInput.value.trim())) {
-                showError(emailInput, 'Enter a valid email.');
-                formValid = false;
-            }
+        return isValid;
+    }
 
-            const pwdInput = document.getElementById('password');
-            if (pwdInput.value.length < 8) {
-                showError(pwdInput, 'Password needs at least 8 characters.');
-                formValid = false;
-            }
-
-            const confirmPwdInput = document.getElementById('confirm-password');
-            if (pwdInput.value !== confirmPwdInput.value || confirmPwdInput.value.trim() === '') {
-                showError(confirmPwdInput, 'Passwords must match.');
-                formValid = false;
-            }
+    function validateName() {
+        const nameInput = document.getElementById('name');
+        if (nameInput.value.trim() === '') {
+            showError(nameInput, 'Name is required.');
+            return false;
+        } else if (nameInput.value.trim().length < 5 || nameInput.value.trim().length > 30) {
+            showError(nameInput, 'Name must be between 5 and 30 characters.');
+            return false;
         }
+        return true;
+    }
 
-        if (!formValid) return false; // Block form submission if invalid.
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        if (!emailIsValid(emailInput.value.trim())) {
+            showError(emailInput, 'Enter a valid email.');
+            return false;
+        }
+        return true;
+    }
 
-        signForm.submit(); // Proceed with submission if valid.
-    };
+    function validatePassword() {
+        const pwdInput = document.getElementById('password');
+        if (pwdInput.value.length < 8) {
+            showError(pwdInput, 'Password needs at least 8 characters.');
+            return false;
+        }
+        return true;
+    }
 
-    signForm.addEventListener('submit', submitHandler);
+    function validateConfirmPassword() {
+        const pwdInput = document.getElementById('password');
+        const confirmPwdInput = document.getElementById('confirm-password');
+        if (pwdInput.value !== confirmPwdInput.value) {
+            showError(confirmPwdInput, 'Passwords must match.');
+            return false;
+        }
+        return true;
+    }
 
     function showError(input, msg) {
+        console.log('showError called for', input.id, 'with message:', msg); // Debug line
         let container = input.closest('.input-group');
+        console.log('Container found:', container); // Debug line
         let error = container.querySelector('.error');
         if (!error) {
             error = document.createElement('div');
@@ -70,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         error.innerText = msg;
         error.style.color = 'red';
     }
+    
 
     function resetErrorMessages() {
         document.querySelectorAll('.error').forEach(error => error.remove());

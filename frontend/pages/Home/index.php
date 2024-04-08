@@ -21,7 +21,7 @@ ini_set('display_errors', 1);
     </div>
         <!-- Product section -->
         <section class="product">
-            <h2 class="product-category">Best selling items</h2>
+            <h2 id="product-category">Best selling items</h2>
             <hr id="hr">
             <div class="space"></div>
             <!-- Button to bring it to the first product  -->

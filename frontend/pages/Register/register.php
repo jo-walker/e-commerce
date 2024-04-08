@@ -70,9 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <div class="container2">
         <h2 id="head">User Registration</h2>
+
         <div class="input-group">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" >
+            <input type="text" name="name" id="name">
         </div>
         <div class="input-group">
             <label for="email">Email</label>
@@ -90,11 +91,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" name="register" id="button-us">Register</button>
         </div>
         <div class="have-account">
-            <p>Already have an Account ?<a href="../Login&Logout/sign.php" id="regihere"> Sign in</a></p>
+            <p>Already have an Account ?<a href="../Login&Logout/sign.php" id="regihere">Sign in</a></p>
         </div>
-        </div>
-
     </form>
+    </div>
     <?php include '../../components/Footer/footer.html'; ?>
  </div>
 </body>

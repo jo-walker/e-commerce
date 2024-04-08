@@ -39,16 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
             formValid = false;
         }
 
-        if (!formValid) {
+       if (!formValid) {
             return false;
-        }
+       }
 
-        signInForm.submit();
+       event.target.submit();
     };
 
     signInForm.addEventListener('submit', submitHandler);
 });
-
+    
 function showError(input, message) {
     const container = input.parentElement;
     let error = container.querySelector('.error-message');
@@ -64,5 +64,5 @@ function showError(input, message) {
 function resetErrorMessages() {
     document.querySelectorAll('.error-message').forEach(error => {
         error.textContent = ''; // Clear the error message
-    });
+    });
 }
