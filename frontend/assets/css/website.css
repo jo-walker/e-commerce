@@ -865,7 +865,7 @@ background-color: #beb6b697;
 
 
 
-/*--------USER PROFILE-----------*/
+/* /--------USER PROFILE-----------/ */
 
 .profile-container {
     display: flex;
@@ -1628,12 +1628,7 @@ a:hover {
 }
 
 .add-product-btn:hover {
-    background-color: rgb(210, 99, 99);
-  
-}
-.back-button {
-    float: left;
-    margin-left: 3.3%;
+    background-color: #af6565;
 }
 
 
@@ -1828,5 +1823,5 @@ p {
 }
 
 .button:hover {
-    background: #000; /* Darker shade of button color on hover */
+    background: #000; /* Darker shade of button color on hover */
 }

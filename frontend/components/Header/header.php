@@ -16,7 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <a href="wishlist.html" class="heart" alt="heart-Image"></a>
             <!-- Search Option -->
             <div class="nav-items">
-                <form action="..\../pages\SearchResult\searchResult.php" method="get" class="search"> <!--to include the form tags for search -->
+                <form action="..\..\pages\SearchResult\searchResult.php" method="get" class="search"> <!--to include the form tags for search -->
                     <input type="text" class="search-box" placeholder="What are you looking for today?" name="searchTerm">
                     <button type="submit" class="search-btn" id="search-btn">search</button>
                 </form>

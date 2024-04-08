@@ -64,6 +64,5 @@ function showError(input, message) {
 function resetErrorMessages() {
     document.querySelectorAll('.error-message').forEach(error => {
         error.textContent = ''; // Clear the error message
-    });
-
+    });
 }
