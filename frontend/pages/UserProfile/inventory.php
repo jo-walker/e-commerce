@@ -34,13 +34,14 @@ $products = getProducts(); // to fetch all products
 <body>
     <?php include '../../components/Header/header.php'; ?>
     <div>
-    <a href="userprof.php" class="back-button">Back to Profile</a>
+    
 </div>
-    <h1 class="manage">Inventory Management</h1>
-
-    <div>
+    <div class="h-inventry">
+        <h1 class="manage">Inventory Management</h1>
         <a href="addProd.php" class=""><button class="add-product-btn">Add New Product</button>
+        <a href="userprof.php" class="back-button">Back to Profile</a>
 </a>
+
     </div>
     <div class="container-inventory">
     <table class="inventory">
@@ -50,7 +51,7 @@ $products = getProducts(); // to fetch all products
                 <th id="tr" class="title-i">Title</th>
                 <th id="tr" class="description-i">Description</th>
                 <th id="tr" class="cat-i">Category</th>
-                <th id="tr" class="stock-i">In-Stock</th>
+                <th id="tr" class="stock-i">Stock</th>
                 <th id="tr" class="price-i">Price</th>
                 <th id="tr" class="color-i">Color</th>
                 <th id="tr" class="actions-i">Actions</th>

@@ -8,74 +8,75 @@
 
 
 
-// function to open cart
-
 // Navigation buttons for cards
-const productContainers = [...document.querySelectorAll('.product-container')];
-const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
-const preBtn = [...document.querySelectorAll('.pre-btn')];
 
-productContainers.forEach((item, i) => {
-    let containerDimenstions = item.getBoundingClientRect();
-    let containerWidth = containerDimenstions.width;
-
-    nxtBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
-    })
-
-    preBtn[i].addEventListener('click', () => {
-        item.scrollLeft -= containerWidth;
-    })
-})
-
-// Existing navigation buttons for cards logic
-const productContainers = [...document.querySelectorAll('.product-container')];
-const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
-const preBtn = [...document.querySelectorAll('.pre-btn')];
-
-productContainers.forEach((item, i) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
-
-    nxtBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
-    });
-
-    preBtn[i].addEventListener('click', () => {
-        item.scrollLeft -= containerWidth;
-    });
-});
-
-// New logic to handle product card navigation if needed
 document.addEventListener('DOMContentLoaded', function() {
+
+    const productContainers = [...document.querySelectorAll('.product-container')];
+    const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+    const preBtn = [...document.querySelectorAll('.pre-btn')];
+    const numberOfCardsToShow = 5; 
+
+    productContainers.forEach((item, i) => {
+        let containerDimensions = item.getBoundingClientRect();
+        let containerWidth = containerDimensions.width;
+
+        nxtBtn[i].addEventListener('click', () => {
+            item.scrollLeft += containerWidth;
+        });
+
+        preBtn[i].addEventListener('click', () => {
+            item.scrollLeft -= containerWidth;
+        });
+    });
+
+    // New logic to handle product card navigation if needed
     const productCards = document.querySelectorAll('.product-card');
     let currentIndex = 0;
 
-    function showProduct(index) {
-        productCards.forEach((card, i) => {
-            card.style.display = i === index ? 'block' : 'none';
-        });
-    }
-
-    if (nxtBtn.length && preBtn.length) {
-        // Assuming you have the same number of next and previous buttons
-        // And that they correspond to navigating single products within each product container
-        nxtBtn.forEach((btn, i) => {
-            btn.addEventListener('click', () => {
-                if (currentIndex < productCards.length - 1) {
-                    currentIndex++;
-                    showProduct(currentIndex);
-                }
-            });
+    function showProduct(startIndex) {
+        // Hide all cards first
+        productCards.forEach(card => {
+            card.style.display = 'none';
         });
 
-        preBtn.forEach((btn, i) => {
-            btn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    showProduct(currentIndex);
-                }
-            });
-        });
+        // Calculate the end index, make sure it does not exceed the length of productCards
+        let endIndex = startIndex + numberOfCardsToShow;
+        endIndex = Math.min(endIndex, productCards.length);
+
+        // Show only the cards within the startIndex and endIndex range
+        for (let i = startIndex; i < endIndex; i++) {
+            productCards[i].style.display = 'block';
+        }
     }
+
+    // Add click event listeners to next and previous buttons
+    nxtBtn.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+            let potentialNextIndex = currentIndex + numberOfCardsToShow;
+            if (potentialNextIndex < productCards.length) {
+                currentIndex = potentialNextIndex;
+            } else {
+                // Show the last set of products if there aren't enough to make a full set
+                currentIndex = productCards.length - numberOfCardsToShow;
+            }
+            showProduct(currentIndex);
+        });
+    });
+
+    preBtn.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+            let potentialPrevIndex = currentIndex - numberOfCardsToShow;
+            if (potentialPrevIndex >= 0) {
+                currentIndex = potentialPrevIndex;
+            } else {
+                currentIndex = 0;
+            }
+            showProduct(currentIndex);
+        });
+    });
+
+    showProduct(currentIndex);
+
 });
+

@@ -21,7 +21,7 @@ ini_set('display_errors', 1);
     </div>
         <!-- Product section -->
         <section class="product">
-            <h2 class="product-category">Best selling items</h2>
+            <h2 id="product-category">Best selling Items</h2>
             <hr id="hr">
             <div class="space"></div>
             <!-- Button to bring it to the first product  -->
@@ -43,7 +43,7 @@ ini_set('display_errors', 1);
                     <span class="discount-tag">50% off</span> <!-- If applicable -->
                             <img src="<?php echo htmlspecialchars($product['ImageURL']); ?>" alt="Product Image" class="product-thumb"> <!-- TO-DO: Image path -->
                             <a href="..\ProductDetails\productD.php?productId=<?php echo htmlspecialchars($product['ProductID']); ?>" class="card-btn">View</a>
-                                <button class="cart-btn">Add to cart</button>
+                                <button class="cart-btn">Cart</button>
                         </div>
                         <div class="product-info">
                             <!-- <h2 class="product-brand"><?php echo htmlspecialchars($product['Brand']); ?></h2> -->
